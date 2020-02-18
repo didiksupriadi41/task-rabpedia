@@ -19,7 +19,9 @@ class CreatePekerjaanTable extends Migration
             $table->string('jenis_pekerjaan');
             $table->string('spesifikasi_teknis');
             $table->string('satuan');
+            $table->decimal('harga_satuan');
             $table->string('cabang_itb');
+            $table->timestamps();
         });
     }
 

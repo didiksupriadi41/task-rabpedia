@@ -23,6 +23,7 @@ class CreateMaterialTable extends Migration
             $table->decimal('harga_satuan', 15, 2);
             $table->string('ketengan_tambahan')->nullable();
             $table->string('cabang_itb');
+            $table->timestamps();
         });
     }
 

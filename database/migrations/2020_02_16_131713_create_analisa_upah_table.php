@@ -20,6 +20,7 @@ class CreateAnalisaUpahTable extends Migration
             $table->integer('id_upah')->unsigned();
             $table->foreign('id_upah')->references('id_upah')->on('upah');
             $table->decimal('koefisien', 15, 2);
+            $table->timestamps();
         });
     }
 

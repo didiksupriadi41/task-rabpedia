@@ -20,6 +20,7 @@ class CreateAnalisaMaterialTable extends Migration
             $table->integer('id_material')->unsigned();
             $table->foreign('id_material')->references('id_material')->on('material');
             $table->decimal('koefisien', 15, 2);
+            $table->timestamps();
         });
     }
 
