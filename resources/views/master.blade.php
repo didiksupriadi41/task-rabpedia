@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PPL Monev - @yield('title')</title>
     <link rel="stylesheet" href="/css/app.css">
+    <script src="/js/app.js"></script>
     @yield('head-extra')
 </head>
 
