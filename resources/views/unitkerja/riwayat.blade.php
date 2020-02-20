@@ -20,16 +20,42 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionHistory">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jasa</th>
+                                <th class="text-right" scope="col">Jumlah</th>
+                                <th class="text-right" scope="col">Biaya</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cat Dinding Dulux</td>
+                                <td class="text-right">50 m<sup>2</sup></td>
+                                <td class="text-right">Rp 300.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jendela Stainless Steel 1m x 3m</td>
+                                <td class="text-right">2 buah</td>
+                                <td class="text-right">Rp 600.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Upah</td>
+                                <td class="text-right">2 Orang</td>
+                                <td class="text-right">Rp 200.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success">
+                            <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
+                            Download RAB
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,16 +74,42 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionHistory">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jasa</th>
+                                <th class="text-right" scope="col">Jumlah</th>
+                                <th class="text-right" scope="col">Biaya</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cat Dinding Dulux</td>
+                                <td class="text-right">50 m<sup>2</sup></td>
+                                <td class="text-right">Rp 300.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jendela Stainless Steel 1m x 3m</td>
+                                <td class="text-right">2 buah</td>
+                                <td class="text-right">Rp 600.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Upah</td>
+                                <td class="text-right">2 Orang</td>
+                                <td class="text-right">Rp 200.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success">
+                            <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
+                            Download RAB
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,16 +128,42 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionHistory">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jasa</th>
+                                <th class="text-right" scope="col">Jumlah</th>
+                                <th class="text-right" scope="col">Biaya</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cat Dinding Dulux</td>
+                                <td class="text-right">50 m<sup>2</sup></td>
+                                <td class="text-right">Rp 300.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jendela Stainless Steel 1m x 3m</td>
+                                <td class="text-right">2 buah</td>
+                                <td class="text-right">Rp 600.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Upah</td>
+                                <td class="text-right">2 Orang</td>
+                                <td class="text-right">Rp 200.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success">
+                            <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
+                            Download RAB
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,16 +182,42 @@
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionHistory">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Jasa</th>
+                                <th class="text-right" scope="col">Jumlah</th>
+                                <th class="text-right" scope="col">Biaya</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cat Dinding Dulux</td>
+                                <td class="text-right">50 m<sup>2</sup></td>
+                                <td class="text-right">Rp 300.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jendela Stainless Steel 1m x 3m</td>
+                                <td class="text-right">2 buah</td>
+                                <td class="text-right">Rp 600.000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Upah</td>
+                                <td class="text-right">2 Orang</td>
+                                <td class="text-right">Rp 200.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-success">
+                            <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
+                            Download RAB
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
