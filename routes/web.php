@@ -17,3 +17,10 @@ Route::get('/', function () {
 Route::get('/persetujuan', function () {
     return view('unitkerja.persetujuan');
 });
+Route::get('/pengajuan-jasa', function () {
+    return view('unitkerja.pengajuan');
+});
+
+Route::get('/riwayat-pengajuan', function () {
+    return view('unitkerja.riwayat');
+});
