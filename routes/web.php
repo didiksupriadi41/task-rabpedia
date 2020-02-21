@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/persetujuan', function () {
+    return view('unitkerja.persetujuan');
+});
