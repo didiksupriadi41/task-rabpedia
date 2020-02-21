@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/pengajuan-jasa', function () {
     return view('unitkerja.pengajuan');
 });
+
+Route::get('/riwayat-pengajuan', function () {
+    return view('unitkerja.riwayat');
+});
