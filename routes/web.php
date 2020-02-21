@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/riwayat-pengajuan', function () {
+    return view('unitkerja.riwayat');
+});
