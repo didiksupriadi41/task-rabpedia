@@ -1,0 +1,15 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 5%px;
+}
+  
+.grid-item {
+    padding-left: 5%;
+    font-size: 300px;
+    text-align: center;
+}
+
+.btn-print{
+    background-color: blue
+}
