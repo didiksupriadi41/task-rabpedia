@@ -32,7 +32,7 @@ class CreateBahanTable extends Migration
     }
 
     public function importCsv() {
-        $file = public_path('file\Monev_Data_Bahan.csv');
+        $file = public_path('file/Monev_Data_Bahan.csv');
         $bahanArr = $this->csvToArray($file);
         foreach ($bahanArr as $bahan){
             DB::table('bahan')->insert(

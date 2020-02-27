@@ -35,7 +35,7 @@ class CreateMaterialTable extends Migration
     }
 
     public function importCsv() {
-        $file = public_path('file\Monev_Data_Material.csv');
+        $file = public_path('file/Monev_Data_Material.csv');
         $materialArr = $this->csvToArray($file);
         foreach ($materialArr as $material){
             DB::table('material')->insert(
