@@ -24,3 +24,7 @@ Route::get('/pengajuan-jasa', function () {
 Route::get('/riwayat-pengajuan', function () {
     return view('unitkerja.riwayat');
 });
+
+Route::get('/lihat-katalog', function () {
+    return view('unitkerja.lihat_katalog');
+});
