@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -36,5 +37,36 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm(Request $request)
+    {
+        if (
+            method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)
+        ) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($request->ticket) {
+            if ($this->attemptLogin($request)) {
+                // return $this->sendLoginResponse($request);
+                return view('auth.login', ['ticket' => $request->ticket]);
+            }
+            $this->incrementLoginAttempts($request);
+            return $this->sendFailedLoginResponse($request);
+        } else {
+            $login_url = config('app.url');
+            $sso_url = "https://login.itb.ac.id/cas/login?service=$login_url";
+            return redirect($sso_url);
+        }
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        #TODO: Check ticket
+        return true;
     }
 }

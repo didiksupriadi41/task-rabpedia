@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/home', function () {
+    return view('home');
 });
 Route::get('/persetujuan', function () {
     return view('unitkerja.persetujuan');
