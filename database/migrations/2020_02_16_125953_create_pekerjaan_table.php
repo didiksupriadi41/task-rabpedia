@@ -32,7 +32,7 @@ class CreatePekerjaanTable extends Migration
     }
 
     public function importCsv() {
-        $file = public_path('file\Monev_Data_Pekerjaan.csv');
+        $file = public_path('file/Monev_Data_Pekerjaan.csv');
         $pekerjaanArr = $this->csvToArray($file);
         foreach ($pekerjaanArr as $pekerjaan){
             DB::table('pekerjaan')->insert(
