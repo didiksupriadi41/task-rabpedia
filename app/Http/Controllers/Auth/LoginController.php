@@ -52,14 +52,14 @@ class LoginController extends Controller
 
         if ($request->ticket) {
             if ($this->attemptLogin($request)) {
-                // return $this->sendLoginResponse($request);
-                return view('auth.login', ['ticket' => $request->ticket]);
+                return $this->sendLoginResponse($request);
+                // return view('auth.login', ['ticket' => $request->ticket]);
             }
             $this->incrementLoginAttempts($request);
             return $this->sendFailedLoginResponse($request);
         } else {
             $login_url = config('app.url');
-            $sso_url = "https://login.itb.ac.id/cas/login?service=$login_url";
+            $sso_url = "https://login.itb.ac.id/cas/login?service=$login_url/login";
             return redirect($sso_url);
         }
     }
