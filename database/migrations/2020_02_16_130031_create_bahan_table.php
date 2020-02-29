@@ -32,7 +32,7 @@ class CreateBahanTable extends Migration
     }
 
     public function importCsv() {
-        $file = public_path('file\Monev_Data_Bahan.csv');
+        $file = public_path('file/Monev_Data_Bahan.csv');
         $bahanArr = $this->csvToArray($file);
         foreach ($bahanArr as $bahan){
             DB::table('bahan')->insert(
@@ -61,7 +61,8 @@ class CreateBahanTable extends Migration
             $table->decimal('harga_satuan', 15, 2);
             $table->string('kelompok_bahan');
             $table->string('cabang_itb');
-            $table->timestamps();
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at')->nullable();
         });
 
         $this->importCsv();

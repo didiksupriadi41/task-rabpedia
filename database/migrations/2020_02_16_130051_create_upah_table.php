@@ -32,7 +32,7 @@ class CreateUpahTable extends Migration
     }
 
     public function importCsv() {
-        $file = public_path('file\Monev_Data_Upah.csv');
+        $file = public_path('file/Monev_Data_Upah.csv');
         $upahArr = $this->csvToArray($file);
         foreach ($upahArr as $upah){
             DB::table('upah')->insert(
@@ -59,7 +59,8 @@ class CreateUpahTable extends Migration
             $table->string('satuan');
             $table->decimal('harga_satuan', 15, 2);
             $table->string('cabang_itb');
-            $table->timestamps();
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at')->nullable();
         });
 
         $this->importCsv();
