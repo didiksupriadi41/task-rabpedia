@@ -15,7 +15,9 @@
 </head>
 
 <body>
+    @if (Auth::check())
     @include('nav')
+    @endif
     <div class="container">
         @yield('content')
     </div>
