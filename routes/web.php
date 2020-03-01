@@ -19,8 +19,10 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/sso-login', 'Auth\LoginController@ssoLogin');
+Route::post('/logout', 'Auth\LoginController@logout');
 
 Route::get('/persetujuan', function () {
     return view('unitkerja.persetujuan');

@@ -13,7 +13,7 @@ class User extends Authenticatable
     /*
      * cn -> name
      * mail -> email
-     * sn -> username
+     * user -> username
      * ou -> organization
      * itbStatus -> itb_status
      */
@@ -44,4 +44,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [];
+
+    public function getAuthPassword()
+    {
+        return '';
+    }
 }
