@@ -62,7 +62,7 @@ class CreateAnalisaUpahTable extends Migration
             $table->integer('id_upah')->unsigned();
             $table->foreign('id_upah')->references('id_upah')->on('upah');
             $table->decimal('koefisien', 15, 4);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 

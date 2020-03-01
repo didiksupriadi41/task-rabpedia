@@ -61,7 +61,7 @@ class CreateAnalisaBahanTable extends Migration
             $table->integer('id_bahan')->unsigned();
             $table->foreign('id_bahan')->references('id_bahan')->on('bahan');
             $table->decimal('koefisien', 15, 4);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 

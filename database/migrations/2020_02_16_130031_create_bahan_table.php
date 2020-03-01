@@ -63,7 +63,7 @@ class CreateBahanTable extends Migration
             $table->decimal('harga_satuan', 15, 2);
             $table->string('kelompok_bahan');
             $table->string('cabang_itb');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 
