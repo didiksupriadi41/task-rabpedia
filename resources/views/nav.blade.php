@@ -18,8 +18,15 @@
             </li>
         </ul>
         <ul class="navbar-nav">
+            <li class="nav-item active">
+                <span class="nav-link">{{Auth::user()->name}}</span>
+            </li>
             <li class="nav-item">
-                <span>Username</span>
+                <form method="POST" action="{{ route('logout') }}" id="logout">
+                    @csrf
+                    <a href="#" class="nav-link text-danger"
+                        onclick="document.getElementById('logout').submit();">Logout</a>
+                </form>
             </li>
         </ul>
     </div>

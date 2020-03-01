@@ -10,27 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Unprotected route
+Route::get('/', function () {
+    return view('welcome');
+})->name('login');
+
+// Authentication routes
+Route::get('/login-form', 'Auth\LoginController@showLoginForm');
+Route::get('/sso-login', 'Auth\LoginController@ssoLogin');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+// Routes protected by authentication middleware
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
-});
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/persetujuan', function () {
+        return view('unitkerja.persetujuan');
+    });
 
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/sso-login', 'Auth\LoginController@ssoLogin');
+    Route::get('/pengajuan-jasa', function () {
+        return view('unitkerja.pengajuan');
+    });
 
-Route::get('/persetujuan', function () {
-    return view('unitkerja.persetujuan');
-});
-Route::get('/pengajuan-jasa', function () {
-    return view('unitkerja.pengajuan');
-});
-
-Route::get('/riwayat-pengajuan', function () {
-    return view('unitkerja.riwayat');
+    Route::get('/riwayat-pengajuan', function () {
+        return view('unitkerja.riwayat');
+    });
 });

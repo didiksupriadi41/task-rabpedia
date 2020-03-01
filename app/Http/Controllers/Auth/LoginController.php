@@ -55,9 +55,8 @@ class LoginController extends Controller
             if ($this->attemptLogin($request)) {
                 return $this->sendLoginResponse($request);
             } else {
-                // $this->incrementLoginAttempts($request);
-                // return $this->sendFailedLoginResponse($request);
-                return "2";
+                $this->incrementLoginAttempts($request);
+                return $this->sendFailedLoginResponse($request);
             }
         } else {
             return redirect('/login');
