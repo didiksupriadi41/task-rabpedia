@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+<<<<<<< HEAD
 use Illuminate\Http\Request;
+=======
+>>>>>>> develop
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
