@@ -15,8 +15,9 @@ class CreatePengajuanTable extends Migration
     {
         Schema::create('pengajuan', function (Blueprint $table) {
             $table->increments('id_pengajuan');
+            $table->string('nama_rab');
             $table->decimal('jumlah_biaya', 15, 2);
-            $table->string('status_pengajuan_total');
+            $table->string('status_pengajuan');
             $table->timestamps();
         });
     }
