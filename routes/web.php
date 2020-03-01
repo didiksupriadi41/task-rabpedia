@@ -21,8 +21,8 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/sso-login', 'Auth\LoginController@ssoLogin');
-Route::post('/logout', 'Auth\LoginController@logout');
 
 Route::get('/persetujuan', function () {
     return view('unitkerja.persetujuan');
