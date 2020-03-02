@@ -35,7 +35,5 @@ Route::middleware(['auth'])->group(function () {
         return view('unitkerja.pengajuan');
     });
 
-    Route::get('/riwayat-pengajuan', function () {
-        return view('unitkerja.riwayat');
-    });
+    Route::get('/riwayat-pengajuan', 'StatusPengajuanController@index');
 });
