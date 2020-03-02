@@ -4,13 +4,13 @@
 
 @section('content')
 <div class="mt-4">
-        @foreach($pengajuan as $pngj)
-    <div class="accordion" id="accordionHistory{{ $pngj->id }}">
+    @foreach($pengajuan as $pngj)        
+        <div class="accordion" id="accordionHistory">
             <div class="card">
                 <div class="card-header d-flex justify-content-between" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn btn-link text-left text-dark" type="button" data-toggle="collapse"
-                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            data-target="#collapseOne_{{ $pngj->id_pengajuan }}" aria-expanded="true" aria-controls="collapseOne">
                             <span>{{ $pngj->nama_rab }}</span><br>
                             <span>{{ $pngj->created_at }}</span>
                         </button>
@@ -25,7 +25,7 @@
                         @endif
                     </div>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionHistory{{ $pngj->id }}">
+                <div id="collapseOne_{{ $pngj->id_pengajuan }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionHistory">
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
@@ -36,18 +36,14 @@
                                     <th class="text-right" scope="col">Biaya</th>
                                 </tr>
                             </thead>
-                            
                             @foreach($detail_pengajuan as $dtl_pngj)
-                                asdasdad
-                                <?php $iteration = 1 ?>
                                 @if($dtl_pngj->id_pengajuan == $pngj->id_pengajuan)
                                     <tbody>
                                         <tr>
+                                            <th scope="row"> {{ $loop->iteration }} </th>
                                             @foreach($pekerjaan as $pkj)
                                                 @if($dtl_pngj->id_pekerjaan == $pkj->id)
-                                                    <th scope="row"> {{ $iteration }} </th>
                                                     <td>{{ $pkj->jenis_pekerjaan }}</td>
-                                                    <?php $iteration += 1 ?>
                                                 @endif
                                             @endforeach
                                             <td class="text-right">{{ $dtl_pngj->volume }} {{$pkj->satuan}}</td>
@@ -66,7 +62,7 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
         @endforeach
 </div>
 @endsection
