@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAnalisaUpahTable extends Migration
 {
-    public function csvToArray($filename = '', $delimiter = ',') {
+    public function csvToArray($filename = '', $delimiter = ',')
+    {
         if (!file_exists($filename) || !is_readable($filename))
             return 1;
         $i = 0;
@@ -18,11 +19,11 @@ class CreateAnalisaUpahTable extends Migration
                     $i++;
                     continue;
                 }
-                for($c = 0; $c < $num; $c++){
-                    if($c == 4)
+                for ($c = 0; $c < $num; $c++) {
+                    if ($c == 4)
                         $data[$i][] = (int) $filedata[$c];
-                    else 
-                        $data[$i][] = $filedata [$c];
+                    else
+                        $data[$i][] = $filedata[$c];
                 }
                 $i++;
             }
@@ -31,15 +32,16 @@ class CreateAnalisaUpahTable extends Migration
         return $data;
     }
 
-    public function importCsv() {
+    public function importCsv()
+    {
         $file = public_path('file/Monev_Data_Analisa_Upah.csv');
         $analisaupahArr = $this->csvToArray($file);
-        foreach ($analisaupahArr as $analisaupah){
+        foreach ($analisaupahArr as $analisaupah) {
             DB::table('analisa_upah')->insert(
                 array(
-                    'id'=>$analisaupah[0],
-                    'id_upah'=>$analisaupah[1],
-                    'koefisien'=>$analisaupah[2],
+                    'id' => $analisaupah[0],
+                    'id_upah' => $analisaupah[1],
+                    'koefisien' => $analisaupah[2],
                 )
             );
         }
@@ -60,7 +62,7 @@ class CreateAnalisaUpahTable extends Migration
             $table->integer('id_upah')->unsigned();
             $table->foreign('id_upah')->references('id_upah')->on('upah');
             $table->decimal('koefisien', 15, 4);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 

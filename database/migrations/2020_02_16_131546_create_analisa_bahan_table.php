@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAnalisaBahanTable extends Migration
 {
-    public function csvToArray($filename = '', $delimiter = ',') {
+    public function csvToArray($filename = '', $delimiter = ',')
+    {
         if (!file_exists($filename) || !is_readable($filename))
             return 1;
         $i = 0;
@@ -18,11 +19,11 @@ class CreateAnalisaBahanTable extends Migration
                     $i++;
                     continue;
                 }
-                for($c = 0; $c < $num; $c++){
-                    if($c == 4)
+                for ($c = 0; $c < $num; $c++) {
+                    if ($c == 4)
                         $data[$i][] = (int) $filedata[$c];
-                    else 
-                        $data[$i][] = $filedata [$c];
+                    else
+                        $data[$i][] = $filedata[$c];
                 }
                 $i++;
             }
@@ -31,15 +32,16 @@ class CreateAnalisaBahanTable extends Migration
         return $data;
     }
 
-    public function importCsv() {
+    public function importCsv()
+    {
         $file = public_path('file/Monev_Data_Analisa_Bahan.csv');
         $analisabahanArr = $this->csvToArray($file);
-        foreach ($analisabahanArr as $analisabahan){
+        foreach ($analisabahanArr as $analisabahan) {
             DB::table('analisa_bahan')->insert(
                 array(
-                    'id'=>$analisabahan[0],
-                    'id_bahan'=>$analisabahan[1],
-                    'koefisien'=>$analisabahan[2],
+                    'id' => $analisabahan[0],
+                    'id_bahan' => $analisabahan[1],
+                    'koefisien' => $analisabahan[2],
                 )
             );
         }
@@ -59,7 +61,7 @@ class CreateAnalisaBahanTable extends Migration
             $table->integer('id_bahan')->unsigned();
             $table->foreign('id_bahan')->references('id_bahan')->on('bahan');
             $table->decimal('koefisien', 15, 4);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 

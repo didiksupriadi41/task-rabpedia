@@ -10,13 +10,23 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /*
+     * cn -> name
+     * mail -> email
+     * user -> username
+     * ou -> organization
+     * itbStatus -> itb_status
+     */
+
+    protected $table = 'sso_users';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'username', 'organization', 'itb_status'
     ];
 
     /**
@@ -25,7 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token'
     ];
 
     /**
@@ -33,7 +43,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = [];
+
+    public function getAuthPassword()
+    {
+        return '';
+    }
 }
