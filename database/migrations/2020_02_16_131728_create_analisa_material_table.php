@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAnalisaMaterialTable extends Migration
 {
-    public function csvToArray($filename = '', $delimiter = ',') {
+    public function csvToArray($filename = '', $delimiter = ',')
+    {
         if (!file_exists($filename) || !is_readable($filename))
             return 1;
         $i = 0;
@@ -18,11 +19,11 @@ class CreateAnalisaMaterialTable extends Migration
                     $i++;
                     continue;
                 }
-                for($c = 0; $c < $num; $c++){
-                    if($c == 4)
+                for ($c = 0; $c < $num; $c++) {
+                    if ($c == 4)
                         $data[$i][] = (int) $filedata[$c];
-                    else 
-                        $data[$i][] = $filedata [$c];
+                    else
+                        $data[$i][] = $filedata[$c];
                 }
                 $i++;
             }
@@ -31,15 +32,16 @@ class CreateAnalisaMaterialTable extends Migration
         return $data;
     }
 
-    public function importCsv() {
+    public function importCsv()
+    {
         $file = public_path('file/Monev_Data_Analisa_Material.csv');
         $analisamaterialArr = $this->csvToArray($file);
-        foreach ($analisamaterialArr as $analisamaterial){
+        foreach ($analisamaterialArr as $analisamaterial) {
             DB::table('analisa_material')->insert(
                 array(
-                    'id'=>$analisamaterial[0],
-                    'id_material'=>$analisamaterial[1],
-                    'koefisien'=>$analisamaterial[2],
+                    'id' => $analisamaterial[0],
+                    'id_material' => $analisamaterial[1],
+                    'koefisien' => $analisamaterial[2],
                 )
             );
         }
@@ -59,7 +61,7 @@ class CreateAnalisaMaterialTable extends Migration
             $table->integer('id_material')->unsigned();
             $table->foreign('id_material')->references('id_material')->on('material');
             $table->decimal('koefisien', 15, 4);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 
