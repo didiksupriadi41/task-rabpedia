@@ -4,7 +4,9 @@
 
 @section('content')
 <div class="mt-4">
-    @foreach($pengajuan as $pngj)        
+    
+    @foreach($pengajuan as $pngj)   
+        <?php $i = 0;?>     
         <div class="accordion" id="accordionHistory">
             <div class="card">
                 <div class="card-header d-flex justify-content-between" id="headingOne">
@@ -40,9 +42,10 @@
                                 @if($dtl_pngj->id_pengajuan == $pngj->id_pengajuan)
                                     <tbody>
                                         <tr>
-                                            <th scope="row"> {{ $loop->iteration }} </th>
                                             @foreach($pekerjaan as $pkj)
                                                 @if($dtl_pngj->id_pekerjaan == $pkj->id)
+                                                    <?php $i += 1;?>
+                                                    <th scope="row"> {{ $i }} </th>
                                                     <td>{{ $pkj->jenis_pekerjaan }}</td>
                                                 @endif
                                             @endforeach
