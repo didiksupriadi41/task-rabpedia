@@ -24,3 +24,7 @@ Route::get('/pengajuan-jasa', function () {
 Route::get('/riwayat-pengajuan', function () {
     return view('unitkerja.riwayat');
 });
+
+Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');
+Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
+Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');

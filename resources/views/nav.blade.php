@@ -13,6 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Riwayat</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/penambahan-katalog">Penambahan</a>
+            </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
