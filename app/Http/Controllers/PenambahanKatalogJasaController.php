@@ -22,15 +22,6 @@ function mapping($template, $content){
 	return $ret;
 }
 
-function search_kategori_in_message($kategori_id, $message) {
-    foreach ($message as $message_part) {
-        if(is_array($message_part) && $message_part["ID Kategori"] == $kategori_id){
-        	return $message_part;
-        }
-    }
-    return false;
-}
-
 class PenambahanKatalogJasaController extends Controller
 {
 
