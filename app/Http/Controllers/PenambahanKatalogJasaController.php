@@ -129,7 +129,7 @@ class PenambahanKatalogJasaController extends Controller
 			$analisa_bahan = AnalisaBahan::where('id_analisa_bahan', $id_analisa)->first();
 			$bahan = Bahan::where('id_bahan', $analisa_bahan->id_bahan)->first();
 			$pekerjaan = Pekerjaan::where('id', $analisa_bahan->id)->first();
-	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan - round($analisa_bahan->koefisien * $bahan->harga_satuan, -2);
+	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan - round(($analisa_bahan->koefisien * $bahan->harga_satuan)*1.1, -2);
 	        $pekerjaan_id_pekerjaan = $pekerjaan->id_pekerjaan;
 	        $pekerjaan_harga_satuan = $pekerjaan->harga_satuan;
 	        $pekerjaan->save();
@@ -140,7 +140,7 @@ class PenambahanKatalogJasaController extends Controller
   			$analisa_upah = AnalisaUpah::where('id_analisa_upah', $id_analisa)->first();
   			$upah = Upah::where('id_upah', $analisa_upah->id_upah)->first();
     		$pekerjaan = Pekerjaan::where('id', $analisa_upah->id)->first();
-	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan - round($analisa_upah->koefisien * $upah->harga_satuan, -2);
+	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan - round(($analisa_upah->koefisien * $upah->harga_satuan)*1.1, -2);
 	        $pekerjaan_id_pekerjaan = $pekerjaan->id_pekerjaan;
 	        $pekerjaan_harga_satuan = $pekerjaan->harga_satuan;
 	        $pekerjaan->save();
@@ -151,7 +151,7 @@ class PenambahanKatalogJasaController extends Controller
     		$analisa_material = AnalisaUpah::where('id_analisa_material', $id_analisa)->first();
     		$material = Material::where('id_material', $analisa_material->id_material)->first();
     		$pekerjaan = Pekerjaan::where('id', $analisa_material->id)->first();
-	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan - round($analisa_material->koefisien * $material->harga_satuan, -2);
+	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan - round(($analisa_material->koefisien * $material->harga_satuan)*1.1, -2);
 	        $pekerjaan_id_pekerjaan = $pekerjaan->id_pekerjaan;
 	        $pekerjaan_harga_satuan = $pekerjaan->harga_satuan;
 	        $pekerjaan->save();
@@ -178,7 +178,7 @@ class PenambahanKatalogJasaController extends Controller
 	        $bahan = Bahan::where('id_bahan', $analisa_bahan->id_bahan)->first();
 
 	        $pekerjaan = Pekerjaan::where('id', $analisa_bahan->id)->first();
-	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan + round($analisa_bahan->koefisien * $bahan->harga_satuan, -2);
+	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan + round(($analisa_bahan->koefisien * $bahan->harga_satuan)*1.1, -2);
 	        $pekerjaan->save();
 
 	        return response()->json([
@@ -202,7 +202,7 @@ class PenambahanKatalogJasaController extends Controller
 	        $upah = Upah::where('id_upah', $analisa_upah->id_upah)->first();
 
 	        $pekerjaan = Pekerjaan::where('id', $analisa_upah->id)->first();
-	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan + round($analisa_upah->koefisien * $upah->harga_satuan, -2);
+	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan + round(($analisa_upah->koefisien * $upah->harga_satuan)*1.1, -2);
 	        $pekerjaan->save();
 
 	        return response()->json([
@@ -216,7 +216,7 @@ class PenambahanKatalogJasaController extends Controller
 	        	'Harga Satuan'=> number_format($upah->harga_satuan, 2)
 	        ]);
     	} else if($request->tipe_analisa == "material"){
-    		$analisa_material = new AnalisaBahan;
+    		$analisa_material = new AnalisaMaterial;
 
 	        $analisa_material->id_material = $request->id_analisa;
 	        $analisa_material->id = $request->id_pekerjaan;
@@ -226,7 +226,7 @@ class PenambahanKatalogJasaController extends Controller
 	        $material = Material::where('id_material', $analisa_material->id_material)->first();
 
 	        $pekerjaan = Pekerjaan::where('id', $analisa_material->id)->first();
-	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan + round($analisa_material->koefisien * $material->harga_satuan, -2);
+	        $pekerjaan->harga_satuan = $pekerjaan->harga_satuan + round(($analisa_material->koefisien * $material->harga_satuan)*1.1, -2);
 	        $pekerjaan->save();
 
 	        return response()->json([

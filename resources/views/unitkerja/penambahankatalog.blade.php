@@ -2,108 +2,11 @@
 
 @section('title', 'Penambahan Katalog Jasa')
 
-@section('content')
-<link rel="stylesheet" href="/css/penambahankatalog.css">
+@section('head-extra')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    function deleteRow(id_analisa_tipe, id_analisa){
-        
-    }
-    $(document).ready(function(){
-        $("#submitInsert").on('click', function(){
-            tipe_analisa = $("#Analisa option:selected").val();
-            id_analisa = "";
-            if(jenis == "bahan"){
-                id_analisa = $("#Bahan option:selected").val();
-            } else if(jenis == "upah"){
-                id_analisa = $("#Upah option:selected").val();
-            } else if(jenis == "material"){
-                id_analisa = $("#Material option:selected").val();
-            }
-            id_pekerjaan = $("#pekerjaan").val();
-            koefisien = $("#koefisien").val();
-            $.ajax({
-                url:'/insertrowanalisa',
-                type:"POST",
-                data: "tipe_analisa=" + tipe_analisa + "&id_analisa=" + id_analisa + "&id_pekerjaan=" + id_pekerjaan + "&koefisien=" + koefisien,
-                success: function(data){
-                    //alert("Insert Sukses");
-                    //$("."+id_analisa_tipe+id_analisa).hide();
-                    console.log(data);
-                    html='<tr class="'+data["Tipe"]+data["ID"]+'">'+
-                        '<td hidden class="analisis-Tipe" value="'+data["Tipe"]+'"></td>'+
-                        '<td hidden class="analisis-ID" value="'+data["ID"]+'"></td>'+
-                        '<td class="value">'+data["Bahan-Upah-Material"]+'</td>'+
-                        '<td class="value">'+data["Koefisien"]+'</td>'+
-                        '<td class="value">'+data["Satuan"]+'</td>'+
-                        '<td class="value">'+data["Harga Satuan"]+'</td>'+
-                        '<td><button class="deleteRow" id="'+data["Tipe"]+data["ID"]+'">X</td>'+
-                        '</tr>';
-                    $("#addBahanUpahMaterial"+id_pekerjaan).prev().append(html);
-                    $("#"+data["ID Pekerjaan"]+"Summary").find("#groupPriceLabelNum").html(data["Harga Satuan Pekerjaan"]);
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
-        });
-        $(".insertButton").on('click', function(){
-            id_pekerjaan = $(this).val();
-            $("#pekerjaan").val(id_pekerjaan);
-            $("#Bahan").attr('hidden', true);
-            $("#Upah").attr('hidden', true);
-            $("#Material").attr('hidden', true);
-            $("#koefisien").val(0);
-            $("#ModalInsert :selected").removeAttr('selected');
-        });
-        $("table").on('click', '.deleteRow', function(){
-            id_analisa_tipe = $(this).parent().parent().find("td.analisis-Tipe:first").attr("value");
-            id_analisa = $(this).parent().parent().find("td.analisis-ID:first").attr("value");
-            $.ajax({
-                url:'/deleterowanalisa',
-                type:"POST",
-                data: "id_analisa_tipe=" + id_analisa_tipe + "&id_analisa=" + id_analisa,
-                success: function(data){
-                    //alert("Delete Sukses");
-                    $("#"+data["ID Pekerjaan"]+"Summary").find("#groupPriceLabelNum").html(data["Harga Satuan Pekerjaan"]);
-                    $("."+id_analisa_tipe+id_analisa).remove();
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
-        });
-        $("#Analisa").change(function(){
-            jenis = $("#Analisa option:selected").val();
-            if(jenis == "bahan"){
-                $("#Bahan").attr('hidden', false);
-                $("#Upah").attr('hidden', true);
-                $("#Material").attr('hidden', true);
-                $("#submitInsert").attr('hidden', false);
-            } else if(jenis == "upah"){
-                $("#Bahan").attr('hidden', true);
-                $("#Upah").attr('hidden', false);
-                $("#Material").attr('hidden', true);
-                $("#submitInsert").attr('hidden', false);
-            } else if (jenis == "material"){
-                $("#Bahan").attr('hidden', true);
-                $("#Upah").attr('hidden', true);
-                $("#Material").attr('hidden', false);
-                $("#submitInsert").attr('hidden', false);                
-            } else{
-                $("#Bahan").attr('hidden', true);
-                $("#Upah").attr('hidden', true);
-                $("#Material").attr('hidden', true);
-                $("#submitInsert").attr('hidden', true);
-            }
-        });
-    });
-</script>
+@endsection
 
+@section('content')
 
 <div class="m-2 p-2" id="content">
     <h1 class="text-center mb-4" id="title">List Pekerjaan/Jasa</h1>
@@ -112,7 +15,7 @@
     	@foreach ($list_kategori as $kategori)
 		<div class="accordion my-1" id='{{$kategori["ID Kategori"]}}'>
             <div class="card">
-                <div class="card-header d-flex justify-content-between bg-primary rounded pb-0" id='{{$kategori["ID Kategori"]}}Summary'
+                <div class="card-header d-flex justify-content-between bg-success rounded pb-0" id='{{$kategori["ID Kategori"]}}Summary'
                 >
                     <h5 class="text-light font-weight-bold pl-1" id="groupName">{{$kategori["Nama Kategori"]}}</h5>
                     <div class="d-flex justify-content-end font-weight-bold" id="groupLabelRight">
@@ -125,7 +28,7 @@
 	    		@foreach ($kategori["List Pekerjaan"] as $pekerjaan)
 				<div class="accordion my-1 ml-4" id='{{$pekerjaan["ID Pekerjaan"]}}'>
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between bg-info rounded pb-0" id='{{$pekerjaan["ID Pekerjaan"]}}Summary'
+                        <div class="card-header d-flex justify-content-between bg-secondary rounded pb-0" id='{{$pekerjaan["ID Pekerjaan"]}}Summary'
                         >
                             <h5 class="text-light font-weight-bold pl-1" id="groupName">{{$pekerjaan["Nama Pekerjaan"]}}@if($pekerjaan["Cabang"] == "Cirebon") (Cirebon) @elseif($pekerjaan["Cabang"] == "Ganesha") (Ganesha)@endif</h5>
                             <div class="d-flex justify-content-end font-weight-bold" id="groupLabelRight">
@@ -172,7 +75,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="ModalInsert" tabindex="-1" role="dialog" aria-labelledby="ModalInsert" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document" style="width:500px">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Insert Analisa</h5>
@@ -183,28 +86,28 @@
       <div class="modal-body">
         <input type="hidden" id="pekerjaan">
         <tr>
-        <td><select id="Analisa" style="width:75px">
+        <td><select id="Analisa">
             <option value=""></option>
             <option value="bahan">Bahan</option>
             <option value="upah">Upah</option>
             <option value="material">Material</option>
         </select></td>
-        <td><select hidden id="Bahan" style="width:300px">
+        <td><select hidden id="Bahan">
             @foreach($bahan as $elemen_bahan)
                 <option value="{{$elemen_bahan->id_bahan}}">{{$elemen_bahan->jenis_bahan_bangunan . ", " . $elemen_bahan->satuan . ", " . $elemen_bahan->harga_satuan . ", " . $elemen_bahan->cabang_itb}}</option>
             @endforeach
         </select>
-        <select hidden id="Upah" style="width:300px">
+        <select hidden id="Upah">
             @foreach($upah as $elemen_upah)
                 <option value="{{$elemen_upah->id_upah}}">{{$elemen_upah->jenis_pekerja . ", " . $elemen_upah->satuan . ", " . $elemen_upah->harga_satuan . ", " . $elemen_upah->cabang_itb}}</option>
             @endforeach
         </select>
-        <select hidden id="Material" style="width:300px">
+        <select hidden id="Material">
             @foreach($material as $elemen_material)
                 <option value="{{$elemen_material->id_material}}">{{$elemen_material->item_material . ", " . $elemen_material->satuan . ", " . $elemen_material->harga_satuan . ", " . $elemen_material->cabang_itb}}</option>
             @endforeach
         </select></td>
-        <td><input type="number" id="koefisien" value="0" style="width:75px"></td>
+        <td><input type="number" id="koefisien" value="0"></td>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -214,4 +117,8 @@
   </div>
 </div>
 
+@endsection
+@section('script-end')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/penambahankatalog.js') }}"></script>
 @endsection
