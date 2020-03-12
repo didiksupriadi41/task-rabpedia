@@ -10884,11 +10884,64 @@ a.text-dark:focus {
   }
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 5% px;
+}
+
+.grid-item {
+  padding-left: 5%;
+  font-size: 300px;
+  text-align: center;
+}
+
+.btn-print {
+  background-color: blue;
+}
+
 .status-pill {
   font-size: 12px;
   padding: 4px 16px;
   border-radius: 13px;
   font-weight: bold;
   letter-spacing: 0.05rem;
+}
+
+.login-container {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  text-align: center;
+}
+
+select#Bahan {
+  width: 300px;
+}
+
+select#Upah {
+  width: 300px;
+}
+
+select#Material {
+  width: 300px;
+}
+
+select#Analisa {
+  width: 75px;
+}
+
+.modal-dialog-centered {
+  width: 500px;
+}
+
+#koefisien {
+  width: 75px;
 }
 

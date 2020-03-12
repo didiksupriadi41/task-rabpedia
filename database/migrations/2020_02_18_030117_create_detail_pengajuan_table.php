@@ -22,7 +22,6 @@ class CreateDetailPengajuanTable extends Migration
             $table->string('no_gambar');
             $table->decimal('volume', 15, 2);
             $table->decimal('jumlah_harga', 15, 2);
-            $table->string('status_pengajuan');
             $table->timestamps();
         });
     }

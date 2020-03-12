@@ -4,10 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUpahTable extends Migration
+class CreatePekerjaanKategoriTable extends Migration
 {
-    public function csvToArray($filename = '', $delimiter = ',')
-    {
+    public function csvToArray($filename = '', $delimiter = ',') {
         if (!file_exists($filename) || !is_readable($filename))
             return 1;
         $i = 0;
@@ -19,11 +18,11 @@ class CreateUpahTable extends Migration
                     $i++;
                     continue;
                 }
-                for ($c = 0; $c < $num; $c++) {
-                    if ($c == 2)
+                for($c = 0; $c < $num; $c++){
+                    if($c == 4)
                         $data[$i][] = (int) $filedata[$c];
-                    else
-                        $data[$i][] = $filedata[$c];
+                    else 
+                        $data[$i][] = $filedata [$c];
                 }
                 $i++;
             }
@@ -32,17 +31,14 @@ class CreateUpahTable extends Migration
         return $data;
     }
 
-    public function importCsv()
-    {
-        $file = public_path('file/Monev_Data_Upah.csv');
-        $upahArr = $this->csvToArray($file);
-        foreach ($upahArr as $upah) {
-            DB::table('upah')->insert(
+    public function importCsv() {
+        $file = public_path('file/Monev_Data_Pekerjaan_Kategori.csv');
+        $pekerjaanKategoriArr = $this->csvToArray($file);
+        foreach ($pekerjaanKategoriArr as $pekerjaan_kategori){
+            DB::table('pekerjaan_kategori')->insert(
                 array(
-                    'jenis_pekerja' => $upah[0],
-                    'satuan' => $upah[1],
-                    'harga_satuan' => $upah[2],
-                    'cabang_itb' => $upah[3]
+                    'id_kategori'=>$pekerjaan_kategori[0],
+                    'nama_kategori'=>$pekerjaan_kategori[1],
                 )
             );
         }
@@ -55,13 +51,11 @@ class CreateUpahTable extends Migration
      */
     public function up()
     {
-        Schema::create('upah', function (Blueprint $table) {
-            $table->increments('id_upah');
-            $table->string('jenis_pekerja');
-            $table->string('satuan');
-            $table->decimal('harga_satuan', 15, 2);
-            $table->string('cabang_itb');
-            $table->timestamp('created_at')->useCurrent();
+        Schema::create('pekerjaan_kategori', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('id_kategori');
+            $table->string('nama_kategori');
+            $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
         });
 
@@ -75,6 +69,6 @@ class CreateUpahTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('upah');
+        Schema::dropIfExists('pekerjaan_kategori');
     }
 }
