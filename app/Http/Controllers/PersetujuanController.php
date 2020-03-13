@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pengajuan;
+use App\Pekerjaan;
+use App\DetailPengajuan;
 use Illuminate\Http\Request;
 
 class PersetujuanController extends Controller
@@ -14,8 +16,14 @@ class PersetujuanController extends Controller
      */
     public function index()
     {
+        $pengajuan = Pengajuan::all();
+        // dump($pengajuan);
+        $detail_pengajuan = DetailPengajuan::all();
+        // dump($detail_pengajuan);
+        $pekerjaan = Pekerjaan::all();
+        // dump($pekerjaan);
       $pengajuan = Pengajuan::all();
-      return view('unitkerja.persetujuan')->with('listPengajuan', $pengajuan);
+      return view('unitkerja.persetujuan.index', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
     }
 
     /**
@@ -58,9 +66,12 @@ class PersetujuanController extends Controller
      */
     public function edit(int $id)
     {
-        //
       $pengajuan = Pengajuan::find($id);
-      return view('unitkerja.persetujuan')->with('pengajuan', $pengajuan);
+      $detail_pengajuan = DetailPengajuan::all();
+      // dump($detail_pengajuan);
+      $pekerjaan = Pekerjaan::all();
+      // dump($pekerjaan);
+      return view('unitkerja.persetujuan.edit', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
     }
 
     /**
@@ -70,9 +81,14 @@ class PersetujuanController extends Controller
      * @param  \App\Pengajuan  $pengajuan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengajuan $pengajuan)
+    public function update(Request $request, $id)
     {
-        //
+      $pengajuan = Pengajuan::find($id);
+
+      $pengajuan->status_pengajuan = request('status_pengajuan');
+      $pengajuan->save();
+
+      return redirect('/persetujuan/');
     }
 
     /**
