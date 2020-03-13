@@ -55,7 +55,7 @@ class CreatePekerjaanKategoriTable extends Migration
             $table->increments('id');
             $table->string('id_kategori');
             $table->string('nama_kategori');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
 
