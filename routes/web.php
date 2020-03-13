@@ -27,10 +27,6 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     });
 
-    Route::get('/persetujuan', function () {
-        return view('unitkerja.persetujuan');
-    });
-
     Route::get('/pengajuan-jasa', function () {
         return view('unitkerja.pengajuan');
     });
@@ -39,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
     Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');
 
+    Route::resource('persetujuan', 'PersetujuanController');
 });
 
 

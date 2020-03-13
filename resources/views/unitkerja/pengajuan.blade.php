@@ -6,6 +6,13 @@
 
 <div class="m-2 p-2" id="content">
     <h1 class="text-center mb-4" id="title">Rencana Anggaran Biaya</h1>
+    <br>
+    <form action="">
+        <label for="title"><h5>Nama Pengajuan : </h5></label>
+        <input class="w-50 ml-2" type="text" id="judulPengajuan" name="judul"><br>
+    </form>
+    <br>
+
     <div id="mainContent">
         <div class="accordion my-1" id="group1">
             <div class="card">
@@ -55,7 +62,7 @@
                                 <td class="value">G-01</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.500.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                               <tr>
                                 <td class="value">Papan Proyek Type C</td>
@@ -65,7 +72,7 @@
                                 <td class="value">G-02</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 2.500.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -109,7 +116,7 @@
                                 <td class="value">G-04</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.500.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                               <tr>
                                 <td class="value">Bongkar dinding</td>
@@ -119,7 +126,7 @@
                                 <td class="value">G-05</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.500.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -161,7 +168,7 @@
                                 <td class="value">G-06</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 2.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -203,7 +210,7 @@
                                 <td class="value">G-07</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -261,7 +268,7 @@
                                 <td class="value">G-10</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -417,7 +424,7 @@
                                 <td class="value">G-15</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -461,7 +468,7 @@
                                 <td class="value">G-16</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -583,7 +590,7 @@
                                 <td class="value">G-20</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 2.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -627,7 +634,7 @@
                                 <td class="value">G-21</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -685,7 +692,7 @@
                                 <td class="value">G-25</td>
                                 <td class="value">3</td>
                                 <td class="value">Rp. 3.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                               <tr>
                                 <td class="value">Pek. Pasang Screen Projector </td>
@@ -695,7 +702,7 @@
                                 <td class="value">G-29</td>
                                 <td class="value">1</td>
                                 <td class="value">Rp. 1.000.000,00</td>
-                                <td class="deleteRow">X</td>
+                                <td class="deleteRow"><button>X</button></td>
                               </tr>
                             </table>
                             <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
@@ -738,12 +745,59 @@
                 </div>
             </div>
         </div>
+
+        <div class="accordion my-1" id="group6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between bg-primary rounded pb-0" id="group6Summary"
+                >
+                    <h5 class="text-light font-weight-bold pl-1" id="groupName">Lain-lain</h5>
+                    <div class="d-flex justify-content-end font-weight-bold" id="groupLabelRight">
+                        <h5 class="text-light mx-3" id="groupPriceLabel">Jumlah Harga</h5>
+                        <h5 class="text-light mx-3" id="groupPriceNumber">Rp. 300.000,00</h5>
+                        <button class="btn btn-link text-left text-dark mx-2 collapsed" type="button" data-toggle="collapse" data-target="#collapseG6" aria-expanded="true" aria-controls="collapseG5" id="Expand"><h5 class="text-light font-weight-bold">V</h5></button>
+                    </div>
+                </div>
+            </div>                    
+                <div id="collapseG6" class="collapse" aria-labelledby="headingG1" data-parent="#group6Summary">
+                    <div class="card-body">
+                        <table class="table table-hover p-5">
+                          <tr class="contentHeader">
+                            <th class="attribute">Uraian Pekerjaan</th>
+                            <th class="attribute">Spesifikasi</th> 
+                            <th class="attribute">Satuan</th>
+                            <th class="attribute">Harga Satuan</th>
+                            <th class="attribute">Gambar</th>
+                            <th class="attribute">Volume</th>
+                            <th class="attribute">Jumlah Harga</th>
+                            <th class="attribute"></th>
+                          </tr>
+                          <tr>
+                            <td class="value">Pilar </td>
+                            <td class="value">Pilar Josephon Principle</td>
+                            <td class="value">buah</td>
+                            <td class="value">Rp. 100.000,00</td>
+                            <td class="value">G-27</td>
+                            <td class="value">3</td>
+                            <td class="value">Rp. 300.000,00</td>
+                            <td class="deleteRow"><button>X</button></td>
+                          </tr>
+                        </table>
+                        <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
+                    </div>
+                </div>
+        </div>
     </div>
 
     <div class="d-flex justify-content-between m-3 pt-4" id="footer" style="border-top: 2pt solid black;">
-        <div class="w-100 h-100 mr-5" id="comment">
-            <h5 id="commentLabel">Komentar :</h5>
-            <div class="d-block border div-10 w-100 mt-3" id="commentContent"><p class="p-3">Pemasangan dilakukan di ruang 7602.</p></div>
+        <div class="w-150 h-100 mr-5" id="comment">
+            <form action = "">
+                <h5 id="commentLabel">Komentar :</h5>
+                <br>
+                <textarea rows="5" cols="65" name="description" id=commentContent></textarea><br>
+             </form>
+
+            {{-- <input class="d-block border div-10 w-100 mt-3" id="commentContent" type="text"> --}}
+            {{-- <p class="p-3">Pemasangan dilakukan di ruang 7602.</p> --}}
         </div>
 
         <div id="rightResult">
@@ -769,8 +823,8 @@
             </div>
 
             <div class="d-flex " id="action">
-                <h4 class="mx-3 px-3 py-4 rounded border border-dark bg-danger" id="cancelRAB">Batalkan</h4>
-                <h4 class="mx-3 px-3 py-4 rounded border border-dark bg-success" id="continueRAB">Lanjutkan</h4>
+                <button class="mx-3 px-3 py-4 rounded border border-dark bg-danger" id="cancelRAB"><h4 >Batalkan</h4></button>
+                <button class="mx-3 px-3 py-4 rounded border border-dark bg-success" id="continueRAB"><h4 >Lanjutkan</h4></button>
             </div>
 
         </div>
