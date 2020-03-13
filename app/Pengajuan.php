@@ -11,6 +11,6 @@ class Pengajuan extends Model
     protected $primaryKey = 'id_pengajuan';
 
     protected $attributes = [
-        'status_pengajuan' => 'pending', // Proposal: status_pengajuan = {pending, accepted, rejected}
+        'status_pengajuan' => 'Pending', // status_pengajuan = {Pending, Accepted, Rejected}
     ];
 }
