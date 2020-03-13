@@ -11,20 +11,36 @@
 |
 */
 
+// Unprotected route
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/persetujuan', function () {
-    return view('unitkerja.persetujuan');
-});
-Route::get('/pengajuan-jasa', function () {
-    return view('unitkerja.pengajuan');
+})->name('login');
+
+// Authentication routes
+Route::get('/login-form', 'Auth\LoginController@showLoginForm');
+Route::get('/sso-login', 'Auth\LoginController@ssoLogin');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+// Routes protected by authentication middleware
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        return view('home');
+    });
+
+    Route::get('/persetujuan', function () {
+        return view('unitkerja.persetujuan');
+    });
+
+    Route::get('/pengajuan-jasa', function () {
+        return view('unitkerja.pengajuan');
+    });
+
+    Route::get('/riwayat-pengajuan', 'StatusPengajuanController@index');
+    Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
+    Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');
+
 });
 
-Route::get('/riwayat-pengajuan', function () {
-    return view('unitkerja.riwayat');
-});
 
-Route::get('/lihat-katalog', function () {
-    return view('unitkerja.lihat_katalog');
-});
+Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
+Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');

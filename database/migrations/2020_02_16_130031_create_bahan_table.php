@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBahanTable extends Migration
 {
-    public function csvToArray($filename = '', $delimiter = ',') {
+    public function csvToArray($filename = '', $delimiter = ',')
+    {
         if (!file_exists($filename) || !is_readable($filename))
             return 1;
         $i = 0;
@@ -18,11 +19,11 @@ class CreateBahanTable extends Migration
                     $i++;
                     continue;
                 }
-                for($c = 0; $c < $num; $c++){
-                    if($c == 2)
+                for ($c = 0; $c < $num; $c++) {
+                    if ($c == 2)
                         $data[$i][] = (int) $filedata[$c];
-                    else 
-                        $data[$i][] = $filedata [$c];
+                    else
+                        $data[$i][] = $filedata[$c];
                 }
                 $i++;
             }
@@ -31,17 +32,18 @@ class CreateBahanTable extends Migration
         return $data;
     }
 
-    public function importCsv() {
+    public function importCsv()
+    {
         $file = public_path('file/Monev_Data_Bahan.csv');
         $bahanArr = $this->csvToArray($file);
-        foreach ($bahanArr as $bahan){
+        foreach ($bahanArr as $bahan) {
             DB::table('bahan')->insert(
                 array(
-                    'jenis_bahan_bangunan'=>$bahan[0],
-                    'satuan'=>$bahan[1],
-                    'harga_satuan'=>$bahan[2],
-                    'kelompok_bahan'=>$bahan[3],
-                    'cabang_itb'=>$bahan[4]
+                    'jenis_bahan_bangunan' => $bahan[0],
+                    'satuan' => $bahan[1],
+                    'harga_satuan' => $bahan[2],
+                    'kelompok_bahan' => $bahan[3],
+                    'cabang_itb' => $bahan[4]
                 )
             );
         }
@@ -61,7 +63,8 @@ class CreateBahanTable extends Migration
             $table->decimal('harga_satuan', 15, 2);
             $table->string('kelompok_bahan');
             $table->string('cabang_itb');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
 
         $this->importCsv();
