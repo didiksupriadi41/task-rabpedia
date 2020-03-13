@@ -7,8 +7,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/pengajuan-jasa">Katalog<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/lihat-katalog">Katalog</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/riwayat-pengajuan">Riwayat</a>
