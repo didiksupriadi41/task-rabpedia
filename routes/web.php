@@ -27,15 +27,13 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     });
 
-    Route::get('/persetujuan', function () {
-        return view('unitkerja.persetujuan');
-    });
-
     Route::get('/pengajuan-jasa', function () {
         return view('unitkerja.pengajuan');
     });
 
     Route::get('/riwayat-pengajuan', 'StatusPengajuanController@index');
+
+    Route::resource('persetujuan', 'PersetujuanController');
 });
 
 Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');
