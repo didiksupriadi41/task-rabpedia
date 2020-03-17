@@ -17,6 +17,7 @@ class CreatePengajuanTable extends Migration
             $table->increments('id_pengajuan');
             $table->decimal('jumlah_biaya', 15, 2);
             $table->string('status_pengajuan_total');
+            $table->string('komentar', 2000);
             $table->timestamps();
         });
     }
