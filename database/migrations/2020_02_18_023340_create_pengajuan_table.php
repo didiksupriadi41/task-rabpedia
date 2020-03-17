@@ -17,7 +17,7 @@ class CreatePengajuanTable extends Migration
             $table->increments('id_pengajuan');
             $table->string('nama_rab');
             $table->decimal('jumlah_biaya', 15, 2);
-            $table->int('id_pengaju');
+            $table->integer('id_pengaju');
             $table->string('organization');
             $table->string('status_pengajuan');
             $table->string('komentar', 2000);
