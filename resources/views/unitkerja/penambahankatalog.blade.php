@@ -26,7 +26,7 @@
 
             <div id='collapse{{$kategori["ID Kategori"]}}' class="collapse" aria-labelledby='heading{{$kategori["ID Kategori"]}}' data-parent='#{{$kategori["ID Kategori"]}}'>
                 @foreach ($kategori["List Pekerjaan"] as $pekerjaan)
-                <div class="accordion my-1 ml-4" id='{{$pekerjaan["ID Pekerjaan"]}}'>
+                <div class="accordion my-1 ml-4" id='{{$pekerjaan["ID Pekerjaan"]}}{{$pekerjaan["Cabang"]}}'>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between bg-secondary rounded pb-0" id='{{$pekerjaan["ID Pekerjaan"]}}Summary'
                         >
@@ -35,12 +35,12 @@
                                 <h5 class="text-light mx-3" id="groupPriceLabelNum">{{$pekerjaan["Harga Satuan"]}}</h5>
                                 <h5 class="text-light mx-3" id="groupPriceLabel">/</h5>
                                 <h5 class="text-light mx-3" id="groupPriceNumber">{{$pekerjaan["Satuan"]}}</h5>
-                                <button class="btn btn-link text-left text-dark mx-2 collapsed" type="button" data-toggle="collapse" data-target='#collapse{{$pekerjaan["ID Pekerjaan"]}}' aria-expanded="false" aria-controls='collapse{{$pekerjaan["ID Pekerjaan"]}}' id="Expand"><h5 class="text-light font-weight-bold">V</h5></button>
+                                <button class="btn btn-link text-left text-dark mx-2 collapsed" type="button" data-toggle="collapse" data-target='#collapse{{$pekerjaan["ID Pekerjaan"]}}{{$pekerjaan["Cabang"]}}' aria-expanded="false" aria-controls='collapse{{$pekerjaan["ID Pekerjaan"]}}{{$pekerjaan["Cabang"]}}' id="Expand"><h5 class="text-light font-weight-bold">V</h5></button>
                             </div>
                         </div>
                     </div>
                     
-                    <div id='collapse{{$pekerjaan["ID Pekerjaan"]}}' class="collapse" aria-labelledby='heading{{$pekerjaan["ID Pekerjaan"]}}' data-parent='#{{$pekerjaan["ID Pekerjaan"]}}'>
+                    <div id='collapse{{$pekerjaan["ID Pekerjaan"]}}{{$pekerjaan["Cabang"]}}' class="collapse" aria-labelledby='heading{{$pekerjaan["ID Pekerjaan"]}}' data-parent='#{{$pekerjaan["ID Pekerjaan"]}}{{$pekerjaan["Cabang"]}}'>
                         <div class="card-body">
                             <table class="table table-hover p-5">           
                               <tr class="contentHeader">
