@@ -44,7 +44,9 @@ class CreatePekerjaanTable extends Migration
                     'spesifikasi_teknis' => $pekerjaan[2],
                     'satuan' => $pekerjaan[3],
                     'harga_satuan' => $pekerjaan[4],
-                    'cabang_itb' => $pekerjaan[5]
+                    'cabang_itb' => $pekerjaan[5], 
+                    'kategori_I' => $pekerjaan[6], 
+                    'kategori_II' => $pekerjaan[7]
                 )
             );
         }
@@ -65,6 +67,8 @@ class CreatePekerjaanTable extends Migration
             $table->string('satuan');
             $table->decimal('harga_satuan', 15, 2);
             $table->string('cabang_itb');
+            $table->string('kategori_I');
+            $table->string('kategori_II');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });

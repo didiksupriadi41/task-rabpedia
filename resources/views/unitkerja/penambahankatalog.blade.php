@@ -13,7 +13,7 @@
     <div id="mainContent">
 
     	@foreach ($list_kategori as $kategori)
-		<div class="accordion my-1" id='{{$kategori["ID Kategori"]}}'>
+        <div class="accordion my-1" id='{{$kategori["ID Kategori"]}}'>
             <div class="card">
                 <div class="card-header d-flex justify-content-between bg-success rounded pb-0" id='{{$kategori["ID Kategori"]}}Summary'
                 >
@@ -25,8 +25,8 @@
             </div>
 
             <div id='collapse{{$kategori["ID Kategori"]}}' class="collapse" aria-labelledby='heading{{$kategori["ID Kategori"]}}' data-parent='#{{$kategori["ID Kategori"]}}'>
-	    		@foreach ($kategori["List Pekerjaan"] as $pekerjaan)
-				<div class="accordion my-1 ml-4" id='{{$pekerjaan["ID Pekerjaan"]}}'>
+                @foreach ($kategori["List Pekerjaan"] as $pekerjaan)
+                <div class="accordion my-1 ml-4" id='{{$pekerjaan["ID Pekerjaan"]}}'>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between bg-secondary rounded pb-0" id='{{$pekerjaan["ID Pekerjaan"]}}Summary'
                         >
@@ -42,15 +42,15 @@
                     
                     <div id='collapse{{$pekerjaan["ID Pekerjaan"]}}' class="collapse" aria-labelledby='heading{{$pekerjaan["ID Pekerjaan"]}}' data-parent='#{{$pekerjaan["ID Pekerjaan"]}}'>
                         <div class="card-body">
-                            <table class="table table-hover p-5">	    	
-			    			  <tr class="contentHeader">
+                            <table class="table table-hover p-5">           
+                              <tr class="contentHeader">
                                 <th class="attribute">Bahan-Upah-Material</th>
                                 <th class="attribute">Koefisien</th> 
                                 <th class="attribute">Satuan</th>
                                 <th class="attribute">Harga Satuan</th>
                                 <th class="attribute"></th>
                               </tr>
-			    			@foreach ($pekerjaan["Analisis"] as $analisis)
+                            @foreach ($pekerjaan["Analisis"] as $analisis)
                               <tr class='{{$analisis["Tipe"].$analisis["ID"]}}'>
                                 <td hidden class='analisis-Tipe' value="{{$analisis['Tipe']}}"></td>
                                 <td hidden class='analisis-ID' value="{{$analisis['ID']}}"></td>
@@ -60,13 +60,13 @@
                                 <td class='value'>{{$analisis["Harga Satuan"]}}</td>
                                 <td><button class='deleteRow' id='{{$analisis["Tipe"].$analisis["ID"]}}'>X</td>
                               </tr>                              
-			    			@endforeach
+                            @endforeach
                             </table>
                             <button class="w-100 rounded insertButton" value='{{$pekerjaan["ID"]}}' id='addBahanUpahMaterial{{$pekerjaan["ID"]}}' data-toggle="modal" data-target="#ModalInsert"><span class="font-weight-bold">+</span></button>
                         </div>      
                     </div>
-                </div>	    		
-	    		@endforeach
+                </div>              
+                @endforeach
             </div>
         </div>
     	@endforeach    
