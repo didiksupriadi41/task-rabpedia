@@ -49,6 +49,7 @@
             $("#Material").attr('hidden', true);
             $("#koefisien").val(0);
             $("#ModalInsert :selected").removeAttr('selected');
+            $("#submitInsert").attr('hidden', true);
         });
         $("table").on('click', '.deleteRow', function(){
             id_analisa_tipe = $(this).parent().parent().find("td.analisis-Tipe:first").attr("value");
