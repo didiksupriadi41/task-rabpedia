@@ -40,3 +40,12 @@ Route::middleware(['auth'])->group(function () {
 
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
 Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');
+
+Route::get('/penambahan-pekerjaan-ditlog', 'PenambahanPekerjaanDitlogController@show_list_pekerjaan');
+Route::get('/penambahan-bahan-ditlog', 'PenambahanBahanDitlogController@show_list_bahan');
+Route::get('/penambahan-upah-ditlog', 'PenambahanUpahDitlogController@show_list_upah');
+Route::get('/penambahan-material-ditlog', 'PenambahanMaterialControllerDitlog@show_list_material');
+
+Route::post('/deleterowupahditlog', 'PenambahanUpahDitlogController@deleteUpah');
+Route::post('/insertrowupahditlog', 'PenambahanUpahDitlogController@storeUpah');
+Route::post('/updaterowupahditlog', 'PenambahanUpahDitlogController@updateUpah');
