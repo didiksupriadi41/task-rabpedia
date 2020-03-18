@@ -7,6 +7,7 @@ use DB;
 use \App\Pengajuan;
 use \App\Pekerjaan;
 use \App\DetailPengajuan;
+use \App\AnalisaDetailPengajuan;
 
 class StatusPengajuanController extends Controller
 {
@@ -15,15 +16,17 @@ class StatusPengajuanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function detail_pengajuan()
     {
         $pengajuan = Pengajuan::all();
-        // dump($pengajuan);
         $detail_pengajuan = DetailPengajuan::all();
-        // dump($detail_pengajuan);
-        $pekerjaan = Pekerjaan::all();
-        // dump($pekerjaan);
-        return view('unitkerja.riwayat', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
+        return view('unitkerja.riwayat', compact(['pengajuan', 'detail_pengajuan']));
+    }
+
+    public function redirect_page_detail_pengajuan()
+    {
+        return view('lihat-katalog');
     }
 
     /**
@@ -55,7 +58,10 @@ class StatusPengajuanController extends Controller
      */
     public function show($id)
     {
-        //
+        $pengajuan = Pengajuan::where('id_pengajuan', $id)->firstOrFail();     
+        $detail_pengajuan = DetailPengajuan::all();
+        $analisa_detail_pengajuan = AnalisaDetailPengajuan::all();
+        return view('unitkerja.detail_pengajuan', compact(['pengajuan', 'detail_pengajuan', 'analisa_detail_pengajuan']));
     }
 
     /**
