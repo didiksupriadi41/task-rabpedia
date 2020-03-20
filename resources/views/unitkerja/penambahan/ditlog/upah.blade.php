@@ -52,25 +52,42 @@
         </button>
       </div>
       <div class="modal-body">
-        <tr>
-        <td>
-        	<input type="text" id="jenis_pekerja" placeholder="Jenis Pekerja">
-        </td>
-        <td><select id="satuan">
-            @foreach($upah_satuan as $elemen_upah_satuan)
-                <option value="{{$elemen_upah_satuan->satuan}}">
-                	{{$elemen_upah_satuan->satuan}}
-                </option>
-            @endforeach
-        </select></td>
-        <td><input type="number" id="harga_satuan" placeholder="Harga Satuan"></td>
-        <td><select id="cabang_itb">
-        	@foreach($upah_cabang as $elemen_upah_cabang)
-        		<option value="{{$elemen_upah_cabang->cabang_itb}}">
-        			{{$elemen_upah_cabang->cabang_itb}}
-        		</option>
-        	@endforeach
-        </select></td>
+      	<div class="container">
+      	  <div class="form-row">
+      	  	<div class="form-group col-md">
+      	  	  <label for="jenis_pekerja"><h6>Jenis Pekerja</h6></label>
+      	  	  <input class="form-control" type="text" id="jenis_pekerja" placeholder="Jenis Pekerja">  
+      	  	</div>
+      	  </div>
+      	  <div class="form-row">
+      	  	<div class="form-group col-md-6">
+      	  	  <label for="satuan"><h6>Satuan</h6></label>
+      	  	  <select class="form-control" id="satuan">
+	            @foreach($upah_satuan as $elemen_upah_satuan)
+	                <option value="{{$elemen_upah_satuan->satuan}}">
+	                	{{$elemen_upah_satuan->satuan}}
+	                </option>
+	            @endforeach
+	          </select>
+      	  	</div>
+      	  	<div class="form-group col-md-6">
+      	  	  <label for="harga_satuan"><h6>Harga Satuan</h6></label>
+      	  	  <input class="form-control" type="number" id="harga_satuan" placeholder="Harga Satuan">  
+      	  	</div>
+      	  </div>
+      	  <div class="form-row">
+      	  	<div class="form-group col-md">
+      	  	  <label for="cabang_itb"><h6>Cabang ITB</h6></label>
+      	  	  <select class="form-control" id="cabang_itb">
+	        	@foreach($upah_cabang as $elemen_upah_cabang)
+	        		<option value="{{$elemen_upah_cabang->cabang_itb}}">
+	        			{{$elemen_upah_cabang->cabang_itb}}
+	        		</option>
+	        	@endforeach
+	          </select>
+      	  	</div>
+      	  </div>
+      	</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
