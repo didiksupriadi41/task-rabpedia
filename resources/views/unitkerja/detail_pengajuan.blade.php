@@ -43,8 +43,8 @@
                                     <th class="text-right" scope="col">Biaya</th>
                                 </tr>
                             </thead>
+                            @foreach($detail_pengajuan as $dtl_pngj)
                             <tbody>
-                                @foreach($detail_pengajuan as $dtl_pngj)
                                 <?php $jumlah_analisa_jlh_harga = 0; ?>
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -108,8 +108,8 @@
                                                 </table>
                                             </div>
                                     </tr>
-                                @endforeach
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
