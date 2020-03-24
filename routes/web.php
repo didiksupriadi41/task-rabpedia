@@ -32,10 +32,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/riwayat-pengajuan', 'StatusPengajuanController@index');
-	Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
-	Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');   	
+    Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
+    Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');
 
-    Route::get('/penambahan-ditlog', function(){
+    Route::get('/penambahan-ditlog', function () {
         return view('unitkerja.penambahan.ditlog.home');
     });
     Route::get('/penambahan-bahan-ditlog', 'PenambahanBahanDitlogController@show_list_bahan');
@@ -45,6 +45,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::resource('persetujuan', 'PersetujuanController');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/hello', function () {
+        return 'Hello admin!';
+    });
 });
 
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
