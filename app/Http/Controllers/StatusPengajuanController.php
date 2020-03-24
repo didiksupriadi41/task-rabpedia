@@ -59,7 +59,7 @@ class StatusPengajuanController extends Controller
     public function show($id)
     {
         $pengajuan = Pengajuan::where('id_pengajuan', $id)->firstOrFail();     
-        $detail_pengajuan = DB::table('detail_pengajuan')->where('id_pengajuan', $id)->groupBy('kategori_I', 'kategori_II')->get();
+        $detail_pengajuan = DetailPengajuan::where('id_pengajuan', $id)->orderBy('kategori_I', 'asc')->orderBy('kategori_II', 'asc')->get();
         $analisa_detail_pengajuan = AnalisaDetailPengajuan::all();
         return view('unitkerja.detail_pengajuan', compact(['pengajuan', 'detail_pengajuan', 'analisa_detail_pengajuan']));
     }
