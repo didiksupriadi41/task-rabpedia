@@ -3,6 +3,7 @@
 @section('title', 'Pengajuan')
 
 @section('content')
+
 <div class="container">
     <div class="row p-3">
         <button type="button" class="btn btn-success bg-primary px-5">
@@ -19,8 +20,14 @@
                             <h2 class="mb-0">
                                 <button class="btn btn-link text-left text-dark" type="button" data-toggle="collapse"
                                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <span>Pengajuan Perbaikan Lorong Lt4 Labtek V</span><br>
-                                    <span>Jumat, 14 Februari 2020</span>
+                                    <span>{{ $pengajuan->nama_rab }}</span><br>
+                                    <?php
+                                      $dtPengajuan = new DateTime($pengajuan->created_at);
+                                      $fmt = new IntlDateFormatter('id_ID',
+                                        IntlDateFormatter::FULL,
+                                        IntlDateFormatter::NONE);
+                                    ?>
+                                    <span>{{ $fmt->format($dtPengajuan) }}</span>
                                 </button>
                             </h2>
                         </div>
@@ -29,52 +36,51 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
                                             <th scope="col">Jasa</th>
                                             <th class="text-right" scope="col">Jumlah</th>
                                             <th class="text-right" scope="col">Biaya</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Cat Dinding Dulux</td>
-                                            <td class="text-right">50 m<sup>2</sup></td>
-                                            <td class="text-right">Rp 300.000</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jendela Stainless Steel 1m x 3m</td>
-                                            <td class="text-right">2 buah</td>
-                                            <td class="text-right">Rp 600.000</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Upah</td>
-                                            <td class="text-right">2 Orang</td>
-                                            <td class="text-right">Rp 200.000</td>
-                                        </tr>
-                                    </tbody>
+                                    @foreach($detail_pengajuan as $dtl_pngj)
+                                        @if($dtl_pngj->id_pengajuan == $pengajuan->id_pengajuan)
+                                            <tbody>
+                                                <tr>
+                                                    @foreach($pekerjaan as $pkj)
+                                                        @if($dtl_pngj->id_pekerjaan == $pkj->id)
+                                                            <td>{{ $pkj->jenis_pekerjaan }}</td>
+                                                        @endif
+                                                    @endforeach
+                                                    <td class="text-right">{{ $dtl_pngj->volume }} {{$pkj->satuan}}</td>
+                                                    <td class="text-right">Rp {{ $dtl_pngj->jumlah_harga }}</td>
+                                                </tr>
+                                            </tbody>
+                                        @endif
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="card">
-                        <h2> Total : Rp 1.000.000</h2>
+                        <?php $fmt = new NumberFormatter( 'id_ID', NumberFormatter::CURRENCY ); ?>
+                        <h2>Total: {{ $fmt->formatCurrency($pengajuan->jumlah_biaya, "IDR") }}</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col justify-content-center">
+          <form method="POST" action="/persetujuan/{{ $pengajuan->id_pengajuan }}">
+            @csrf
+            @method('PUT')
+
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
+                <input class="form-check-input" type="radio" name="status_pengajuan" id="status_pengajuan" value="Selesai" checked>
+                <label class="form-check-label" for="status_pengajuan">
                     Setuju
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
+                <input class="form-check-input" type="radio" name="status_pengajuan" id="status_pengajuan" value="Ditolak">
+                <label class="form-check-label" for="status_pengajuan">
                     Tidak Setuju
                 </label>
             </div>
@@ -84,11 +90,13 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
             </div>
-            <button type="button" class="btn btn-success bg-primary p-3">
-                <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
+            <button type="submit" class="btn btn-success bg-primary p-3">
+                <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
                     Konfirmasi
             </button>
+          </form>
         </div>
     </div>
 <div>
+
 @endsection

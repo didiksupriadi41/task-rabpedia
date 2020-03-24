@@ -14,16 +14,20 @@ class CreateDetailPengajuanTable extends Migration
     public function up()
     {
         Schema::create('detail_pengajuan', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_detail_pengajuan');
             $table->integer('id_pengajuan')->unsigned();
             $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan');
-            $table->integer('id_pekerjaan')->unsigned();
-            $table->foreign('id_pekerjaan')->references('id')->on('pekerjaan');
+            $table->string('nama_pekerjaan');
+            $table->string('spesifikasi', 1200);
+            $table->string('kode_pekerjaan');
             $table->string('no_gambar');
             $table->decimal('volume', 15, 2);
-            $table->decimal('jumlah_harga', 15, 2);
-            $table->string('status_pengajuan');
-            $table->timestamps();
+            $table->string('satuan');
+            $table->decimal('harga_satuan', 15, 2);
+            $table->string('kategori_I', 1000);
+            $table->string('kategori_II', 1000);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
