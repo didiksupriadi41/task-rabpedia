@@ -5,16 +5,67 @@
 @section('content')
 
 <div class="m-2 p-2" id="content">
-    <h1 class="text-center mb-4" id="title">Rencana Anggaran Biaya</h1>
-    <br>
+    <h1 class="text-center mb-4" id="title">Rencana Anggaran Biaya</h1><br>
+
     <form action="">
         <label for="title"><h5>Nama Pengajuan : </h5></label>
-        <input class="w-50 ml-2" type="text" id="judulPengajuan" name="judul"><br>
+        <input class="w-50 ml-2" type="text" id="kategori1" name="judul"><br>
     </form>
     <br>
 
     <div id="mainContent">
-        <div class="accordion my-1" id="group1">
+        
+        @foreach ($list_kategori as $kategori)
+		<div class="accordion my-1" id='{{$kategori["ID Kategori"]}}'>
+            <div class="card">
+                <div class="card-header d-flex justify-content-between bg-success rounded pb-0" id='{{$kategori["Nama Kategori"]}}'>
+                    <h5 class="text-light font-weight-bold pl-1" id="groupName">{{$kategori["Nama Kategori"]}}</h5>
+                    <div class="d-flex justify-content-end font-weight-bold" id="groupLabelRight">
+                        <button class="btn btn-link text-left text-dark mx-2 collapsed" type="button" data-toggle="collapse" data-target='#collapse{{$kategori["ID Kategori"]}}' aria-expanded="true" aria-controls='collapse{{$kategori["ID Kategori"]}}' id="Expand"><h5 class="text-light font-weight-bold">V</h5></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id='collapse{{$kategori["ID Kategori"]}}' class="collapse" aria-labelledby='heading{{$kategori["ID Kategori"]}}' data-parent='#{{$kategori["ID Kategori"]}}'>
+                <table class="table table-hover p-5">
+                    <tr class="contentHeader">
+                        <th class="attribute">Uraian Pekerjaan</th>
+                        <th class="attribute">Spesifikasi</th> 
+                        <th class="attribute">Satuan</th>
+                        <th class="attribute">Harga Satuan</th>
+                        <th class="attribute">Gambar</th>
+                        <th class="attribute">Volume</th>
+                        <th class="attribute">Jumlah Harga</th>
+                        <th class="attribute"></th>
+                    </tr>
+                    <tr>
+                        <td class="PekerjaanValue"> 
+                            <select class='w-100' id='pekerjaan'>
+                                @foreach ($kategori["List Pekerjaan"] as $pekerjaan)
+                                    <option value="{{$pekerjaan["ID Pekerjaan"]}}"> {{$pekerjaan["Nama Pekerjaan"]}}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td class="value">Pilar Josephon Principle</td>
+                        <td class="value">buah</td>
+                        <td class="value">Rp. 100.000,00</td>
+                        <td class="value">
+                            <input class="w-50" type="text" id="picture" name="filePicture">
+                        </td>
+                        <td class="value">
+                            <input class="w-50" type="text" id="count" name="jumlah">
+                        </td>
+                        <td class="value">Rp. 300.000,00</td>
+                        <td class="deleteRow"><button>X</button></td>
+                    </tr>
+                </table>
+                <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
+            </div>
+    @endforeach
+    </div>
+
+
+        {{-- <div class="accordion my-1" id="group1">
             <div class="card">
                 <div class="card-header d-flex justify-content-between bg-primary rounded pb-0" id="group1Summary"
                 >
@@ -785,7 +836,7 @@
                         <button class="w-100 rounded" id="addBarang"><span class="font-weight-bold">+</span></button>
                     </div>
                 </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="d-flex justify-content-between m-3 pt-4" id="footer" style="border-top: 2pt solid black;">
@@ -831,4 +882,7 @@
     </div>
 </div>
 
+@endsection
+@section('script-end')
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 @endsection
