@@ -42,14 +42,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penambahan-upah-ditlog', 'PenambahanUpahDitlogController@show_list_upah');
     Route::get('/penambahan-material-ditlog', 'PenambahanMaterialDitlogController@show_list_material');
     Route::get('/penambahan-pekerjaan-ditlog', 'PenambahanPekerjaanDitlogController@show_list_pekerjaan');
+    Route::get('/penambahan-bahan-ditlog', 'PenambahanBahanDitlogController@show_list_bahan');
+    Route::get('/persetujuan-bahan-ditlog', function(){
+    return view('unitkerja.persetujuan.ditlog.persetujuan_semua');
+    });
 
 
     Route::resource('persetujuan', 'PersetujuanController');
 });
-Route::get('/penambahan-bahan-ditlog', 'PenambahanBahanDitlogController@show_list_bahan');
-Route::get('/persetujuan-bahan-ditlog', function(){
-    return view('unitkerja.persetujuan.ditlog.persetujuan_semua');
-});
+
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
 Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');
 
