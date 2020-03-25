@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/insertrowbahanuser', 'PenambahanBahanDitlogController@storeBahanUser');
+Route::post('/insertrowmaterialuser', 'PenambahanMaterialDitlogController@storeMaterialUser');
 
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
 Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');
