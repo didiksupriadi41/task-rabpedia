@@ -16,6 +16,17 @@ class PenambahanMaterialDitlogController extends Controller
     		'material_satuan' => ($material_satuan),
     		'material_cabang' => ($material_cabang)
     	]);
+	}
+	
+	public function show_list_material_user(){
+    	$material = Material::all();
+    	$material_satuan = Material::select('satuan')->distinct()->get();
+    	$material_cabang = Material::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.penambahan.user.material', [
+    		'material' => ($material), 
+    		'material_satuan' => ($material_satuan),
+    		'material_cabang' => ($material_cabang)
+    	]);
     }
 
     public function deleteMaterial(Request $request){

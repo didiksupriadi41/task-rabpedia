@@ -16,6 +16,17 @@ class PenambahanUpahDitlogController extends Controller
     		'upah_satuan' => ($upah_satuan), 
     		'upah_cabang' => ($upah_cabang)
     	]);
+	}
+	
+	public function show_list_upah_user(){
+    	$upah = Upah::all();
+    	$upah_satuan = Upah::select('satuan')->distinct()->get();
+    	$upah_cabang = Upah::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.penambahan.user.upah', [
+    		'upah' => ($upah), 
+    		'upah_satuan' => ($upah_satuan), 
+    		'upah_cabang' => ($upah_cabang)
+    	]);
     }
 
     public function deleteUpah(Request $request){

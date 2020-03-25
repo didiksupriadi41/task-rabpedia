@@ -18,6 +18,19 @@ class PenambahanBahanDitlogController extends Controller
     		'bahan_kelompok' => ($bahan_kelompok),  
     		'bahan_cabang' => ($bahan_cabang)
     	]);
+	}
+
+	public function show_list_bahan_user(){
+    	$bahan = Bahan::all();
+    	$bahan_satuan = Bahan::select('satuan')->distinct()->get();
+    	$bahan_kelompok = Bahan::select('kelompok_bahan')->distinct()->get();
+    	$bahan_cabang = Bahan::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.penambahan.user.bahan', [
+    		'bahan' => ($bahan), 
+    		'bahan_satuan' => ($bahan_satuan),
+    		'bahan_kelompok' => ($bahan_kelompok),  
+    		'bahan_cabang' => ($bahan_cabang)
+    	]);
     }
 
     public function deleteBahan(Request $request){
