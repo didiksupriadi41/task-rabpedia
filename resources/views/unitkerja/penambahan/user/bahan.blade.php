@@ -59,6 +59,18 @@
               </select>
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group col-md">
+                <label for="komentar"><h6>Id Pengajuan</h6></label>
+                <input class="form-control" type="number" id="id_pengaju" placeholder="Id Pengaju">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md">
+                <label for="komentar"><h6>Komentar</h6></label>
+                <input class="form-control" type="text" id="komentar" placeholder="Komentar untuk Pengajuan">
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -74,4 +86,5 @@
 
 @section('script-end')
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/user/penambahanbahan.js') }}"></script>
 @endsection

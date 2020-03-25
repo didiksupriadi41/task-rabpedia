@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('persetujuan', 'PersetujuanController');
 });
 
+Route::post('/insertrowbahanuser', 'PenambahanBahanDitlogController@storeBahanUser');
+
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
 Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');
 

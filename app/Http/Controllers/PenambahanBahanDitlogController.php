@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Bahan;
+use \App\PengajuanBahanInsert;
 
 class PenambahanBahanDitlogController extends Controller
 {
@@ -66,7 +67,35 @@ class PenambahanBahanDitlogController extends Controller
     	return response()->json([
     		'bahan' => ($bahan)
     	]);
-    }
+	}
+	
+	public function storeBahanUser(Request $request){
+    	$validatedData = $request->validate([
+    		'jenis_bahan_bangunan' => 'required', 
+    		'satuan' => 'required', 
+    		'harga_satuan' => 'required',
+    		'kelompok_bahan' => 'required', 
+			'cabang_itb' => 'required',
+			'id_pengaju' => 'required',
+			'komentar' => 'required',
+    	]);
+
+    	$bahan = new PengajuanBahanInsert;
+
+    	$bahan->jenis_bahan_bangunan = $request->jenis_bahan_bangunan;
+    	$bahan->satuan = $request->satuan;
+    	$bahan->harga_satuan = $request->harga_satuan;
+    	$bahan->kelompok_bahan = $request->kelompok_bahan;
+		$bahan->cabang_itb = $request->cabang_itb;
+		$bahan->id_pengaju = $request->id_pengaju;
+		$bahan->komentar = $request->komentar;
+
+    	$bahan->save();
+
+    	return response()->json([
+    		'bahan' => ($bahan)
+    	]);
+	}
 
     public function updateBahan(Request $request){
     	$validatedData = $request->validate([
