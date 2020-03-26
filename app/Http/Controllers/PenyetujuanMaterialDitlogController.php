@@ -54,12 +54,50 @@ class PenyetujuanMaterialDitlogController extends Controller
     	return response()->json([
     		'material' => ($material)
     	]);
-	}
+    }
+    
+    public function insert_material_update_user(Request $request){
+        $validatedData = $request->validate([
+            'id' => 'required',
+            'id_material' => 'required',
+            'item_material' => 'required', 
+            'volume' => 'required',
+            'harga_pembanding' => 'required',
+            'harga_saat_ini' => 'required',
+            'harga_satuan' => 'required',
+        ]);
+
+
+        $material = Material::where('id_material', $request->id_material)->first();
+
+        $material->item_material = $request->item_material;
+        $material->volume = $request->volume;
+        $material->harga_pembanding = $request->harga_pembanding;    
+        $material->harga_saat_ini = $request->harga_saat_ini;    
+        $material->harga_satuan = $request->harga_satuan;    
+
+        $material->save();
+        $this->delete_material_update_user($request);
+
+        return response()->json([
+            'material' => ($material) 
+        ]);    
+    }
     
 
     public function delete_material_insert_user(Request $request){
         $id = $request->id;
         $bahan_deleted = PengajuanMaterialInsert::where([
+            ['id', '=', $id]
+        ])->delete();
+
+        return response()->json([
+        ]);
+    }
+
+    public function delete_material_update_user(Request $request){
+        $id = $request->id;
+        $bahan_deleted = PengajuanMaterialUpdate::where([
             ['id', '=', $id]
         ])->delete();
 

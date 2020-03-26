@@ -15,7 +15,7 @@ $(document).ready(function(){
         keterangan_tambahan = $(this).parent().parent().parent().find("td.keterangan_tambahan").text();
         cabang_itb = $(this).parent().parent().parent().find("td.cabang_itb").text();
         $.ajax({
-            url:'/insertfrommaterialinsertitlog',
+            url:'/insertfrommaterialinsertditlog',
             type:"POST",
             data: "id=" + id + "&item_material=" + item_material + "&volume=" + volume + "&satuan=" + satuan + "&harga_pembanding=" + harga_pembanding + "&harga_saat_ini=" + harga_saat_ini + "&harga_satuan=" + harga_satuan + "&keterangan_tambahan=" + keterangan_tambahan + "&cabang_itb=" + cabang_itb,
             success: function(data){
@@ -26,14 +26,17 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.agreeUpdateRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
-        id_bahan = $(this).parent().parent().parent().find("td.bahan-update-ID").attr("value");
-        jenis_bahan_bangunan = $(this).parent().parent().parent().find("td.jenis_bahan_bangunan").text();
+        id = $(this).parent().parent().parent().find("td.material-ID").attr("value");
+        id_material = $(this).parent().parent().parent().find("td.material-update-ID").attr("value");
+        item_material = $(this).parent().parent().parent().find("td.item_material").text();
+        volume = $(this).parent().parent().parent().find("td.volume").text();
+        harga_pembanding = $(this).parent().parent().parent().find("td.harga_pembanding").text();
+        harga_saat_ini = $(this).parent().parent().parent().find("td.harga_saat_ini").text();
         harga_satuan = $(this).parent().parent().parent().find("td.harga_satuan").text();
         $.ajax({
-            url:'/insertfrombahanupdateditlog',
+            url:'/insertfrommaterialupdateditlog',
             type:"POST",
-            data: "id=" + id + "&id_bahan=" + id_bahan + "&jenis_bahan_bangunan=" + jenis_bahan_bangunan + "&harga_satuan=" + harga_satuan,
+            data: "id=" + id + "&id_material=" + id_material + "&item_material=" + item_material + "&volume=" + volume + "&harga_pembanding=" + harga_pembanding + "&harga_saat_ini=" + harga_saat_ini + "&harga_satuan=" + harga_satuan,
             success: function(data){
                 $(".update"+id).remove();
             }, error: function(response){
@@ -70,10 +73,9 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.declineUpdateRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
-        console.log(id);
+        id = $(this).parent().parent().parent().find("td.material-ID").attr("value");
         $.ajax({
-            url:'/deletefrombahanupdateditlog',
+            url:'/deletefrommaterialupdateditlog',
             type:"POST",
             data: "id=" + id,
             success: function(data){
