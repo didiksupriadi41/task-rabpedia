@@ -17,8 +17,9 @@ class CreatePengajuanMaterialDeleteTable extends Migration
             $table->increments('id');
             $table->integer('id_material_delete')->unsigned();
             $table->foreign('id_material_delete')->references('id_material')->on('material');
-            $table->integer('id_pengaju')->unsigned();
-            $table->foreign('id_pengaju')->references('id')->on('sso_users');
+            $table->integer('id_pengaju')->nullable();
+            // $table->integer('id_pengaju')->unsigned();
+            // $table->foreign('id_pengaju')->references('id')->on('sso_users');
             $table->string('komentar', 2000);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();

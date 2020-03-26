@@ -17,8 +17,9 @@ class CreatePengajuanUpahDeleteTable extends Migration
             $table->increments('id');
             $table->integer('id_upah_delete')->unsigned();
             $table->foreign('id_upah_delete')->references('id_upah')->on('upah');
-            $table->integer('id_pengaju')->unsigned();
-            $table->foreign('id_pengaju')->references('id')->on('sso_users');
+            $table->integer('id_pengaju')->nullable();
+            // $table->integer('id_pengaju')->unsigned();
+            // $table->foreign('id_pengaju')->references('id')->on('sso_users');
             $table->string('komentar', 2000);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
