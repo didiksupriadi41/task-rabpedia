@@ -16,12 +16,12 @@
 	  	    	</a>
 					</div>
 					<div class="col col-md-4">
-				<a href='/penambahan-bahan-ditlog'>
+				<a href='/pengeditan-bahan-user'>
 			    		<button class='btn btn-success btn-lg text-light btn-block font-weight-bold mx-5' aria-pressed="false">Update</button><br><br>
 	  	    	</a>
 					</div>
 					<div class="col col-md-4">
-						<a href='/penambahan-bahan-ditlog'>
+						<a href='/pengurangan-bahan-user'>
 			    		<button class='btn btn-warning btn-lg text-light btn-block font-weight-bold mx-5' aria-pressed="false">Delete</button><br><br>
 	  	    	</a>
 					</div>
@@ -34,12 +34,12 @@
 				</a>
 			</div>
 			<div class="col col-md-4">
-				<a href='/penambahan-bahan-ditlog'>
+				<a href='/pengeditan-material-user'>
 					<button class='btn btn-success btn-lg text-light btn-block font-weight-bold mx-5' aria-pressed="false">Update</button><br><br>
 				</a>
 			</div>
 			<div class="col col-md-4">
-				<a href='/penambahan-bahan-ditlog'>
+				<a href='/pengurangan-material-user'>
 					<button class='btn btn-warning btn-lg text-light btn-block font-weight-bold mx-5' aria-pressed="false">Delete</button><br><br>
 			</a>
 			</div>
@@ -52,12 +52,12 @@
 	  	    	</a>
 			</div>
 			<div class="col col-md-4">
-				<a href='/penambahan-bahan-ditlog'>
+				<a href='/pengeditan-upah-user'>
 					<button class='btn btn-success btn-lg text-light btn-block font-weight-bold mx-5' aria-pressed="false">Update</button><br><br>
 	  	    	</a>
 			</div>
 			<div class="col col-md-4">
-				<a href='/penambahan-bahan-ditlog'>
+				<a href='/pengurangan-upah-user'>
 					<button class='btn btn-warning btn-lg text-light btn-block font-weight-bold mx-5' aria-pressed="false">Delete</button><br><br>
 				</a>
 			</div>
