@@ -222,38 +222,26 @@ $akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100 - $ratusan);
 
     <div class="col justify-content-center">
         <form method="POST" action="/persetujuan/{{ $pengajuan->id_pengajuan }}">
-          @csrf
-          @method('PUT')
+            @csrf
+            @method('PUT')
+            <div class="container py-5">
+                <label for="status_pengajuan">Status Pengajuan</label>
 
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="status_pengajuan" id="status_pengajuan" value="Selesai" checked>
-              <label class="form-check-label" for="status_pengajuan">
-                  Setuju
-              </label>
-          </div>
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="status_pengajuan" id="status_pengajuan" value="Ditolak">
-              <label class="form-check-label" for="status_pengajuan">
-                  Tidak Setuju
-              </label>
-          </div>
-          <div class="container py-5">
-              <p> Komentar </p>
-              <div class="form-group">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
-          </div>
-          </div>
-          <button type="submit" class="btn btn-success bg-primary p-3">
-              <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
-                  Konfirmasi
-          </button>
-        </form>
-        <div class="container py-5">
-            <p> Komentar </p>
-            <div class="form-group">
-                <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="8">{{ $pengajuan->komentar }}</textarea>
+                <select name="status_pengajuan" required id="status_pengajuan" class="form-control">
+                    <option value="">--Silakan pilih satu opsi--</option>
+                    <option value="Selesai">Setuju</option>
+                    <option value="Ditolak">Tidak setuju</option>
+                </select>
+                <p>Komentar</p>
+                <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
             </div>
-        </div>
+            </div>
+            <button type="submit" class="btn btn-success bg-primary p-3">
+                <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
+                    Konfirmasi
+            </button>
+        </form>
     </div>
 <div>
 @endsection
