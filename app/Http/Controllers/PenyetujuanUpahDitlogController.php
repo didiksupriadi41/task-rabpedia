@@ -71,6 +71,20 @@ class PenyetujuanUpahDitlogController extends Controller
         ]);    
     }
 
+    public function insert_upah_delete_user(Request $request){
+        $id = $request->id;
+        $id_upah = $request->id_upah;
+
+        $this->delete_upah_delete_user($request);
+
+        $upah_deleted = Upah::where([
+            ['id_upah', '=', $id_upah]
+        ])->delete();
+
+        return response()->json([
+        ]);    
+    }
+
     public function delete_upah_insert_user(Request $request){
         $id = $request->id;
         $bahan_deleted = PengajuanUpahInsert::where([
@@ -84,6 +98,16 @@ class PenyetujuanUpahDitlogController extends Controller
     public function delete_upah_update_user(Request $request){
         $id = $request->id;
         $bahan_deleted = PengajuanUpahUpdate::where([
+            ['id', '=', $id]
+        ])->delete();
+
+        return response()->json([
+        ]);
+    }
+
+    public function delete_upah_delete_user(Request $request){
+        $id = $request->id;
+        $bahan_deleted = PengajuanUpahDelete::where([
             ['id', '=', $id]
         ])->delete();
 

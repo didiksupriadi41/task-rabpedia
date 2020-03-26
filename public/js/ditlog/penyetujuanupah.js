@@ -38,13 +38,12 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.agreeDeleteRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
-        id_bahan = $(this).parent().parent().parent().find("td.bahan-delete-ID").attr("value");
-        console.log(id_bahan);
+        id = $(this).parent().parent().parent().find("td.upah-ID").attr("value");
+        id_upah = $(this).parent().parent().parent().find("td.upah-delete-ID").attr("value");
         $.ajax({
-            url:'/insertfrombahandeleteditlog',
+            url:'/insertfromupahdeleteditlog',
             type:"POST",
-            data: "id=" + id + "&id_bahan=" + id_bahan,
+            data: "id=" + id + "&id_upah=" + id_upah,
             success: function(data){
                 $(".delete"+id).remove();
             }, error: function(response){
@@ -80,9 +79,9 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.declineDeleteRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
+        id = $(this).parent().parent().parent().find("td.upah-ID").attr("value");
         $.ajax({
-            url:'/deletefrombahandeleteditlog',
+            url:'/deletefromupahdeleteditlog',
             type:"POST",
             data: "id=" + id,
             success: function(data){
