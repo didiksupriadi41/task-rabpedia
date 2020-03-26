@@ -42,24 +42,24 @@
                 });
             })
         });
-        $("table").on('click', '.updateRow', function(){
+        $("table").on('click', '.editRow', function(){
             id_bahan = $(this).parent().parent().parent().find("td.bahan-ID:first").attr("value");
             jenis_bahan_bangunan = $(this).parent().parent().parent().find("td.jenis_bahan_bangunan input").val();
             harga_satuan = $(this).parent().parent().parent().find("td.harga_satuan input").val();
-            console.log(jenis_bahan_bangunan);
-            console.log(harga_satuan);
-            $.ajax({
-                url:'/updaterowbahanditlog',
-                type:"POST",
-                data: "id_bahan=" + id_bahan + "&jenis_bahan_bangunan=" + jenis_bahan_bangunan + "&harga_satuan=" + harga_satuan,
-                success: function(data){
-                    console.log(data);
-                    $("."+id_bahan).find("td.jenis_bahan_bangunan input").val(data["bahan"].jenis_bahan_bangunan);
-                    $("."+id_bahan).find("td.harga_satuan input").val(data["bahan"].harga_satuan);
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
+            $("#editButton").on('click', function(){  
+                id_pengaju = $("#id_pengaju").val();
+                komentar = $('#komentar').val();  
+                $.ajax({
+                    url:'/updaterowbahanuser',
+                    type:"POST",
+                    data: "id_bahan_update=" + id_bahan + "&jenis_bahan_bangunan=" + jenis_bahan_bangunan + "&harga_satuan=" + harga_satuan + "&id_pengaju=" + id_pengaju + "&komentar=" + komentar,
+                    success: function(data){
+                        console.log(data);
+                    }, error: function(response){
+                        console.log(response);
+                    }
+                });
+            })
         });
     });
 } ) ( jQuery );
