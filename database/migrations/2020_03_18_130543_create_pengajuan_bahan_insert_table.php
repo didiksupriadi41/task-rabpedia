@@ -20,8 +20,9 @@ class CreatePengajuanBahanInsertTable extends Migration
             $table->decimal('harga_satuan', 15, 2);
             $table->string('kelompok_bahan');
             $table->string('cabang_itb');
-            $table->integer('id_pengaju')->unsigned();
-            $table->foreign('id_pengaju')->references('id')->on('sso_users');
+            $table->integer('id_pengaju')->nullable();
+            // $table->integer('id_pengaju')->unsigned();
+            // $table->foreign('id_pengaju')->references('id')->on('sso_users');
             $table->string('komentar', 2000);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
