@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pengajuan;
 use App\Pekerjaan;
 use App\DetailPengajuan;
+use App\AnalisaDetailPengajuan;
 use Illuminate\Http\Request;
 
 class PersetujuanController extends Controller
@@ -67,11 +68,9 @@ class PersetujuanController extends Controller
     public function edit(int $id)
     {
       $pengajuan = Pengajuan::find($id);
-      $detail_pengajuan = DetailPengajuan::all();
-      // dump($detail_pengajuan);
-      $pekerjaan = Pekerjaan::all();
-      // dump($pekerjaan);
-      return view('unitkerja.persetujuan.edit', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
+      $detail_pengajuan = DetailPengajuan::where('id_pengajuan', $id)->orderBy('kategori_I', 'asc')->orderBy('kategori_II', 'asc')->get();
+      $analisa_detail_pengajuan = AnalisaDetailPengajuan::all();
+      return view('unitkerja.persetujuan.edit', compact(['pengajuan', 'detail_pengajuan', 'analisa_detail_pengajuan']));
     }
 
     /**
