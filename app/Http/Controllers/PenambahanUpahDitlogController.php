@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Upah;
 use \App\PengajuanUpahInsert;
 use \App\PengajuanUpahDelete;
+use \App\PengajuanUpahUpdate;
 
 class PenambahanUpahDitlogController extends Controller
 {
@@ -36,6 +37,17 @@ class PenambahanUpahDitlogController extends Controller
     	$upah_satuan = Upah::select('satuan')->distinct()->get();
     	$upah_cabang = Upah::select('cabang_itb')->distinct()->get();
     	return view('unitkerja.delete.user.upah', [
+    		'upah' => ($upah), 
+    		'upah_satuan' => ($upah_satuan), 
+    		'upah_cabang' => ($upah_cabang)
+    	]);
+	}
+
+	public function show_list_edit_upah_user(){
+    	$upah = Upah::all();
+    	$upah_satuan = Upah::select('satuan')->distinct()->get();
+    	$upah_cabang = Upah::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.edit.user.upah', [
     		'upah' => ($upah), 
     		'upah_satuan' => ($upah_satuan), 
     		'upah_cabang' => ($upah_cabang)
@@ -132,6 +144,30 @@ class PenambahanUpahDitlogController extends Controller
 
     	$upah->jenis_pekerja = $request->jenis_pekerja;
     	$upah->harga_satuan = $request->harga_satuan;
+
+    	$upah->save();
+
+    	return response()->json([
+    		'upah' => ($upah) 
+    	]);
+	}
+	
+	public function updateUpahUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_upah_update' => 'required',
+    		'jenis_pekerja' => 'required', 
+			'harga_satuan' => 'required',
+			'id_pengaju' => 'required',
+			'komentar' => 'required'
+    	]);
+
+		$upah = new PengajuanUpahUpdate;
+		
+    	$upah->id_upah_update = $request->id_upah_update;
+    	$upah->jenis_pekerja = $request->jenis_pekerja;
+		$upah->harga_satuan = $request->harga_satuan;
+		$upah->id_pengaju = $request->id_pengaju;
+		$upah->komentar = $request->komentar;
 
     	$upah->save();
 

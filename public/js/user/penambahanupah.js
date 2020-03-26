@@ -42,24 +42,24 @@
                 });
             })
         });
-        $("table").on('click', '.updateRow', function(){
+        $("table").on('click', '.editRow', function(){
             id_upah = $(this).parent().parent().parent().find("td.upah-ID:first").attr("value");
             jenis_pekerja = $(this).parent().parent().parent().find("td.jenis_pekerja input").val();
             harga_satuan = $(this).parent().parent().parent().find("td.harga_satuan input").val();
-            console.log(jenis_pekerja);
-            console.log(harga_satuan);
-            $.ajax({
-                url:'/updaterowupahditlog',
-                type:"POST",
-                data: "id_upah=" + id_upah + "&jenis_pekerja=" + jenis_pekerja + "&harga_satuan=" + harga_satuan,
-                success: function(data){
-                    console.log(data);
-                    $("."+id_upah).find("td.jenis_pekerja input").val(data["upah"].jenis_pekerja);
-                    $("."+id_upah).find("td.harga_satuan input").val(data["upah"].harga_satuan);
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
+            $("#editButton").on('click', function(){  
+                id_pengaju = $("#id_pengaju").val();
+                komentar = $('#komentar').val();  
+                $.ajax({
+                    url:'/updaterowupahuser',
+                    type:"POST",
+                    data: "id_upah_update=" + id_upah + "&jenis_pekerja=" + jenis_pekerja + "&harga_satuan=" + harga_satuan + "&id_pengaju=" + id_pengaju + "&komentar=" + komentar,
+                    success: function(data){
+                        console.log(data);
+                    }, error: function(response){
+                        console.log(response);
+                    }
+                });
+            })
         });
     });
 } ) ( jQuery );

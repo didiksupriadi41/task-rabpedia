@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pengurangan-upah-user', 'PenambahanUpahDitlogController@show_list_delete_upah_user');
     Route::get('/pengeditan-bahan-user', 'PenambahanBahanDitlogController@show_list_edit_bahan_user');        
     Route::get('/pengeditan-material-user', 'PenambahanMaterialDitlogController@show_list_edit_material_user');        
+    Route::get('/pengeditan-upah-user', 'PenambahanUpahDitlogController@show_list_edit_upah_user');        
 
     Route::resource('persetujuan', 'PersetujuanController');
 });
@@ -65,6 +66,7 @@ Route::post('/deleterowmaterialuser', 'PenambahanMaterialDitlogController@delete
 Route::post('/updaterowmaterialuser', 'PenambahanMaterialDitlogController@updateMaterialUser');
 Route::post('/insertrowupahuser', 'PenambahanUpahDitlogController@storeUpahUser');
 Route::post('/deleterowupahuser', 'PenambahanUpahDitlogController@deleteUpahUser');
+Route::post('/updaterowupahuser', 'PenambahanUpahDitlogController@updateUpahUser');
 
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
 Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');
