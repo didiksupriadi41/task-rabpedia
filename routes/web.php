@@ -43,9 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penambahan-material-ditlog', 'PenambahanMaterialDitlogController@show_list_material');
     Route::get('/penambahan-pekerjaan-ditlog', 'PenambahanPekerjaanDitlogController@show_list_pekerjaan');
     Route::get('/penambahan-bahan-ditlog', 'PenambahanBahanDitlogController@show_list_bahan');
-    Route::get('/persetujuan-bahan-ditlog', function(){
-    return view('unitkerja.persetujuan.ditlog.persetujuan_semua');
-    });
+    Route::get('/persetujuan-bahan-ditlog', 'PenyetujuanBahanDitlogController@show_list_bahan_pengajuan');
 
 
     Route::resource('persetujuan', 'PersetujuanController');
