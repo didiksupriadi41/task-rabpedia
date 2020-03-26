@@ -6,8 +6,8 @@
 
 <div class="container">
     <div class="row p-3">
-        <button type="button" class="btn btn-success bg-primary px-5">
-            <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
+        <button type="button" class="btn btn-success bg-primary px-3">
+            <span class="oi oi-print" title="spreadsheet" aria-hidden="true"></span>
                 Print
         </button>
     </div>
@@ -225,22 +225,19 @@ $akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100 - $ratusan);
             @csrf
             @method('PUT')
             <div class="container py-5">
-                <label for="status_pengajuan">Status Pengajuan</label>
-
+                <label for="status_pengajuan">Status pengajuan:</label>
                 <select name="status_pengajuan" required id="status_pengajuan" class="form-control">
                     <option value="">--Silakan pilih satu opsi--</option>
                     <option value="Selesai">Setuju</option>
                     <option value="Ditolak">Tidak setuju</option>
                 </select>
-                <p>Komentar</p>
-                <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                <label for="komentar">Komentar:</label>
+                <textarea class="form-control" id="komentar" name="komentar" rows="8"></textarea>
+                <button type="submit" class="btn btn-success bg-primary px-3">
+                    <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
+                        Konfirmasi
+                </button>
             </div>
-            </div>
-            <button type="submit" class="btn btn-success bg-primary p-3">
-                <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
-                    Konfirmasi
-            </button>
         </form>
     </div>
 <div>

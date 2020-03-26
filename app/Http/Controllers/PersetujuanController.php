@@ -85,6 +85,7 @@ class PersetujuanController extends Controller
       $pengajuan = Pengajuan::find($id);
 
       $pengajuan->status_pengajuan = request('status_pengajuan');
+      $pengajuan->komentar = request('komentar');
       $pengajuan->save();
 
       return redirect('/riwayat-pengajuan/' . $id);
