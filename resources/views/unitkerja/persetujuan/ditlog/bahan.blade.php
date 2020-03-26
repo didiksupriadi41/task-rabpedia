@@ -65,8 +65,8 @@
             <td class='value komentar'>{{$elemen_bahan_update->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-              	<button class='declineUpdateRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_update->id}}'>X</button>
-              	<button class='agreeUpdateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_update->id}}'>V</button>
+              	<button class='declineUpdateRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_update->id}}'>X</button>
+              	<button class='agreeUpdateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_update->id}}'>V</button>
               </div>
             </td>
           </tr>
