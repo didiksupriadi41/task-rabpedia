@@ -24,7 +24,7 @@ class PenyetujuanMaterialDitlogController extends Controller
     	]);
     }
 
-    public function insert_material_delete_user(Request $request){
+    public function insert_material_insert_user(Request $request){
     	$validatedData = $request->validate([
             'id' => 'required',
     		'item_material' => 'required', 
@@ -84,10 +84,34 @@ class PenyetujuanMaterialDitlogController extends Controller
         ]);    
     }
     
+    public function insert_material_delete_user(Request $request){
+        $id = $request->id;
+        $id_material = $request->id_material;
+
+        $this->delete_material_delete_user($request);
+
+        $material_deleted = Material::where([
+            ['id_material', '=', $id_material]
+        ])->delete();
+
+        return response()->json([
+        ]);    
+    }
 
     public function delete_material_insert_user(Request $request){
         $id = $request->id;
-        $bahan_deleted = PengajuanMaterialInsert::where([
+        $material_deleted = PengajuanMaterialInsert::where([
+            ['id', '=', $id]
+        ])->delete();
+
+        return response()->json([
+            'material' => ($material_deleted) 
+        ]);
+    }
+
+    public function delete_material_update_user(Request $request){
+        $id = $request->id;
+        $material_deleted = PengajuanMaterialUpdate::where([
             ['id', '=', $id]
         ])->delete();
 
@@ -95,9 +119,9 @@ class PenyetujuanMaterialDitlogController extends Controller
         ]);
     }
 
-    public function delete_material_update_user(Request $request){
+    public function delete_material_delete_user(Request $request){
         $id = $request->id;
-        $bahan_deleted = PengajuanMaterialUpdate::where([
+        $material_deleted = PengajuanMaterialDelete::where([
             ['id', '=', $id]
         ])->delete();
 

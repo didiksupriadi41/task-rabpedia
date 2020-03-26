@@ -75,8 +75,8 @@
             <td class='value komentar'>{{$elemen_material_update->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-            	<button class='declineUpdateRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_update->id_material}}'>X</button>
-            	<button class='agreeUpdateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_update->id_material}}'>V</button>
+            	<button class='declineUpdateRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_update->id}}'>X</button>
+            	<button class='agreeUpdateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_update->id}}'>V</button>
               </div>
             </td>
           </tr>
@@ -100,9 +100,9 @@
             </tr>
           </thead>
           @foreach ($material_delete as $elemen_material_delete)
-          <tr class ='delete{{$elemen_material_delete->id_material}}'>
+          <tr class ='delete{{$elemen_material_delete->id}}'>
             <td hidden class='material-ID' value='{{$elemen_material_delete->id}}'></td>
-            <td hidden class='material-delete-ID' value='{{$elemen_material_delete->id_material_delete}}'></td>
+            <td hidden class='material-delete-ID' value='{{$elemen_material_delete->id_material}}'></td>
             <td class='value item_material'>{{$elemen_material_delete->item_material}}</td>
             <td class='value volume'>{{$elemen_material_delete->volume}}</td>
             <td class='value satuan'>{{$elemen_material_delete->satuan}}</td>
@@ -115,8 +115,8 @@
             <td class='value komentar'>{{$elemen_material_delete->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-            	<button class='updateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_material_delete->id_material}}'>Update</button>
-            	<button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_material_delete->id_material}}'>Delete</button>
+            	<button class='declineDeleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_delete->id}}'>X</button>
+            	<button class='agreeDeleteRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_delete->id}}'>V</button>
               </div>
             </td>
           </tr>

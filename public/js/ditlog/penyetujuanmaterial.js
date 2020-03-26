@@ -45,13 +45,12 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.agreeDeleteRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
-        id_bahan = $(this).parent().parent().parent().find("td.bahan-delete-ID").attr("value");
-        console.log(id_bahan);
+        id = $(this).parent().parent().parent().find("td.material-ID").attr("value");
+        id_material = $(this).parent().parent().parent().find("td.material-delete-ID").attr("value");
         $.ajax({
-            url:'/insertfrombahandeleteditlog',
+            url:'/insertfrombamaterialdeleteditlog',
             type:"POST",
-            data: "id=" + id + "&id_bahan=" + id_bahan,
+            data: "id=" + id + "&id_material=" + id_material,
             success: function(data){
                 $(".delete"+id).remove();
             }, error: function(response){
@@ -86,9 +85,9 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.declineDeleteRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
+        id = $(this).parent().parent().parent().find("td.material-ID").attr("value");
         $.ajax({
-            url:'/deletefrombahandeleteditlog',
+            url:'/deletefrommaterialdeleteditlog',
             type:"POST",
             data: "id=" + id,
             success: function(data){
