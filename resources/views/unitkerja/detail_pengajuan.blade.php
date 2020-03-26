@@ -43,7 +43,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <?php $total = 0; ?>
+                            <?php $total = 0;?>
                             <div class="card-body">
                                 <table class="table table-hover">
                                     <thead>
@@ -59,10 +59,10 @@
                                             <th class="text-right" scope="col">Jumlah Harga</th>
                                         </tr>
                                     </thead>
-                                    <?php 
-                                        $kategotiI = "empty";
-                                        $kategotiII = "empty";
-                                    ?>
+                                    <?php
+$kategotiI = "empty";
+$kategotiII = "empty";
+?>
                                     <?php $iter = 1;?>
                                     @foreach($detail_pengajuan as $dtl_pngj)
                                         @if($kategotiI != $dtl_pngj->kategori_I)
@@ -74,13 +74,13 @@
                                                     <th style="font-size: small;" colspan="9">{{ $dtl_pngj->kategori_II }}</th>
                                                 </tr>
                                                 <!-- <th></th>   <th></th>   <th></th>   <th></th>   <th></th>   <th></th>   <th></th> -->
-                                                <?php $iter = 1; ?>
+                                                <?php $iter = 1;?>
                                                 <?php $kategotiII = $dtl_pngj->kategori_II?>
                                             @endif
                                         @endif
-                                        
+
                                         <tbody>
-                                            <?php $jumlah_analisa_jlh_harga = 0; ?>
+                                            <?php $jumlah_analisa_jlh_harga = 0;?>
                                                 <tr>
                                                     <th scope="row">{{ $iter }}</th>
                                                     <td>{{ $dtl_pngj->nama_pekerjaan }}</td>
@@ -90,14 +90,14 @@
                                                     <td>{{ $dtl_pngj->volume }}</td>
                                                     <td>{{ $dtl_pngj->satuan }}</td>
                                                     <td>{{ $dtl_pngj->harga_satuan }}</td>
-                                                    <?php 
-                                                        $jlh_harga = $dtl_pngj->volume * $dtl_pngj->harga_satuan; 
-                                                        $total = $total + $jlh_harga;
-                                                    ?>
+                                                    <?php
+$jlh_harga = $dtl_pngj->volume * $dtl_pngj->harga_satuan;
+$total = $total + $jlh_harga;
+?>
                                                     <td class="text-right">Rp {{ $jlh_harga }}</td>
                                                 </tr>
                                         </tbody>
-                                        <?php $iter += 1 ?>
+                                        <?php $iter += 1?>
                                     @endforeach
                                     <tr>
                                         <th class="text-right" colspan="8">Jumlah Biaya</th>
@@ -114,9 +114,9 @@
                                     <tr>
                                         <th class="text-right" colspan="8">Dibulatkan</th>
                                         <?php
-                                            $ratusan = substr(round($total * 1.1), -2);
-                                            $total = round($total * 1.1) + (100-$ratusan);
-                                        ?>
+$ratusan = substr(round($total * 1.1), -2);
+$total = round($total * 1.1) + (100 - $ratusan);
+?>
                                         <th class="text-right">Rp {{ $total }}</th>
                                     </tr>
                                 </table>
@@ -149,9 +149,9 @@
                                     @endif
                                 </div>
                             </div>
-                            <?php $total = 0; ?>
+                            <?php $total = 0;?>
                             <div class="card-body">
-                                
+
                                     <div>
                                         <table class="table table-hover">
                                             <thead>
@@ -164,9 +164,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php $loopiter = 1; ?>
+                                            <?php $loopiter = 1;?>
                                             @foreach($detail_pengajuan as $dtl_pngj)
-                                                 <?php $jumlah_analisa_jlh_harga = 0; ?>
+                                                 <?php $jumlah_analisa_jlh_harga = 0;?>
                                                  <tr>
                                                     <th colspan="5"> {{ $loopiter }}. {{ $dtl_pngj->nama_pekerjaan }} </th>
                                                  </tr>
@@ -177,10 +177,10 @@
                                                             <td class="text-right">{{ $analisa_dtl_pngj->koefisien }}</td>
                                                             <td class="text-right">{{ $analisa_dtl_pngj->satuan }}</td>
                                                             <td class="text-right">Rp {{ $analisa_dtl_pngj->harga_satuan }}</td>
-                                                            <?php 
-                                                                $analisa_jlh_harga = $analisa_dtl_pngj->koefisien * $analisa_dtl_pngj->harga_satuan;
-                                                                $jumlah_analisa_jlh_harga += $analisa_jlh_harga;
-                                                            ?>
+                                                            <?php
+$analisa_jlh_harga = $analisa_dtl_pngj->koefisien * $analisa_dtl_pngj->harga_satuan;
+$jumlah_analisa_jlh_harga += $analisa_jlh_harga;
+?>
                                                             <td class="text-right">Rp {{ $analisa_jlh_harga }}</td>
                                                         </tr>
                                                     @endif
@@ -200,9 +200,9 @@
                                                 <tr>
                                                     <td class="text-right" colspan="4">Dibulatkan</td>
                                                     <?php
-                                                            $ratusan = substr(round($jumlah_analisa_jlh_harga * 1.1), -2);
-                                                            $akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100-$ratusan);
-                                                    ?>
+$ratusan = substr(round($jumlah_analisa_jlh_harga * 1.1), -2);
+$akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100 - $ratusan);
+?>
                                                     <td class="text-right">Rp {{ $akhir }}</td>
                                                 </tr>
                                                 <?php $loopiter += 1?>
@@ -210,7 +210,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col justify-content-center">
         <div class="container py-5">
             <p> Komentar </p>
