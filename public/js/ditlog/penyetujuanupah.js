@@ -22,14 +22,14 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.agreeUpdateRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
-        id_bahan = $(this).parent().parent().parent().find("td.bahan-update-ID").attr("value");
-        jenis_bahan_bangunan = $(this).parent().parent().parent().find("td.jenis_bahan_bangunan").text();
+        id = $(this).parent().parent().parent().find("td.upah-ID").attr("value");
+        id_upah = $(this).parent().parent().parent().find("td.upah-update-ID").attr("value");
+        jenis_pekerja = $(this).parent().parent().parent().find("td.jenis_pekerja").text();
         harga_satuan = $(this).parent().parent().parent().find("td.harga_satuan").text();
         $.ajax({
-            url:'/insertfrombahanupdateditlog',
+            url:'/insertfromupahupdateditlog',
             type:"POST",
-            data: "id=" + id + "&id_bahan=" + id_bahan + "&jenis_bahan_bangunan=" + jenis_bahan_bangunan + "&harga_satuan=" + harga_satuan,
+            data: "id=" + id + "&id_upah=" + id_upah + "&jenis_pekerja=" + jenis_pekerja + "&harga_satuan=" + harga_satuan,
             success: function(data){
                 $(".update"+id).remove();
             }, error: function(response){
@@ -66,10 +66,10 @@ $(document).ready(function(){
         });
     });
     $("table").on('click', '.declineUpdateRow', function(){
-        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
+        id = $(this).parent().parent().parent().find("td.upah-ID").attr("value");
         console.log(id);
         $.ajax({
-            url:'/deletefrombahanupdateditlog',
+            url:'/deletefromupahupdateditlog',
             type:"POST",
             data: "id=" + id,
             success: function(data){

@@ -52,16 +52,17 @@
             </tr>
           </thead>
           @foreach ($upah_update as $elemen_upah_update)
-          <tr class ='{{$elemen_upah_update->id}}'>
-            <td hidden class='bahan-ID' value='{{$elemen_upah_update->id_upah_update}}'></td>
+          <tr class ='update{{$elemen_upah_update->id}}'>
+            <td hidden class='upah-ID' value='{{$elemen_upah_update->id}}'></td>
+            <td hidden class='upah-update-ID' value='{{$elemen_upah_update->id_upah_update}}'></td>
             <td class='value jenis_pekerja'>{{$elemen_upah_update->jenis_pekerja}}</td>
             <td class='value harga_satuan'>{{$elemen_upah_update->harga_satuan}}</td>
             <td class='value id_pengaju'>{{$elemen_upah_update->id_pengaju}}</td>
             <td class='value komentar'>{{$elemen_upah_update->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-              	<button class='updateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_update->id}}'>Update</button>
-              	<button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_update->id}}'>Delete</button>
+              	<button class='declineUpdateRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_update->id}}'>X</button>
+              	<button class='agreeUpdateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_update->id}}'>V</button>
               </div>
             </td>
           </tr>

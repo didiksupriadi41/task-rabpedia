@@ -49,9 +49,41 @@ class PenyetujuanUpahDitlogController extends Controller
         ]); 
     }
 
+    public function insert_upah_update_user(Request $request){
+        $validatedData = $request->validate([
+            'id' => 'required',
+            'id_upah' => 'required',
+            'jenis_pekerja' => 'required',
+            'harga_satuan' => 'required', 
+        ]);
+
+
+        $upah = Upah::where('id_upah', $request->id_upah)->first();
+
+        $upah->jenis_pekerja = $request->jenis_pekerja;
+        $upah->harga_satuan = $request->harga_satuan;    
+
+        $upah->save();
+        $this->delete_upah_update_user($request);
+
+        return response()->json([
+            'upah' => ($upah) 
+        ]);    
+    }
+
     public function delete_upah_insert_user(Request $request){
         $id = $request->id;
         $bahan_deleted = PengajuanUpahInsert::where([
+            ['id', '=', $id]
+        ])->delete();
+
+        return response()->json([
+        ]);
+    }
+
+    public function delete_upah_update_user(Request $request){
+        $id = $request->id;
+        $bahan_deleted = PengajuanUpahUpdate::where([
             ['id', '=', $id]
         ])->delete();
 

@@ -83,6 +83,8 @@ Route::get('/pengeditan-upah-user', 'PenambahanUpahDitlogController@show_list_ed
 Route::post('/deletefromupahinsertditlog', 'PenyetujuanUpahDitlogController@delete_upah_insert_user');
 Route::post('/insertfromupahinsertditlog', 'PenyetujuanUpahDitlogController@insert_upah_insert_user');
 
+Route::post('/deletefromupahupdateditlog', 'PenyetujuanUpahDitlogController@delete_upah_update_user');
+Route::post('/insertfromupahupdateditlog', 'PenyetujuanUpahDitlogController@insert_upah_update_user');
 
 Route::post('/insertrowbahanuser', 'PenambahanBahanDitlogController@storeBahanUser');
 Route::post('/deleterowbahanuser', 'PenambahanBahanDitlogController@deleteBahanUser');
