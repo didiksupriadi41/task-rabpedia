@@ -31,11 +31,12 @@ Route::middleware(['auth'])->group(function () {
         return view('unitkerja.pengajuan');
     });
 
+
     Route::get('/riwayat-pengajuan', 'StatusPengajuanController@detail_pengajuan');
 	Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
 	Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');   	
 
-    Route::get('/penambahan-ditlog', function(){
+    Route::get('/penambahan-ditlog', function () {
         return view('unitkerja.penambahan.ditlog.home');
     });
 
@@ -90,6 +91,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/hello', function () {
+        return 'Hello admin!';
+    });
+});
+
 Route::post('/insertrowbahanuser', 'PenambahanBahanDitlogController@storeBahanUser');
 Route::post('/deleterowbahanuser', 'PenambahanBahanDitlogController@deleteBahanUser');
 Route::post('/updaterowbahanuser', 'PenambahanBahanDitlogController@updateBahanUser');
@@ -99,9 +106,6 @@ Route::post('/updaterowmaterialuser', 'PenambahanMaterialDitlogController@update
 Route::post('/insertrowupahuser', 'PenambahanUpahDitlogController@storeUpahUser');
 Route::post('/deleterowupahuser', 'PenambahanUpahDitlogController@deleteUpahUser');
 Route::post('/updaterowupahuser', 'PenambahanUpahDitlogController@updateUpahUser');
-
-Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
-Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');
 
 Route::post('/deleterowupahditlog', 'PenambahanUpahDitlogController@deleteUpah');
 Route::post('/insertrowupahditlog', 'PenambahanUpahDitlogController@storeUpah');
