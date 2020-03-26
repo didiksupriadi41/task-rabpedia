@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penambahan-material-ditlog', 'PenambahanMaterialDitlogController@show_list_material');
     Route::get('/penambahan-pekerjaan-ditlog', 'PenambahanPekerjaanDitlogController@show_list_pekerjaan');
 
+    Route::get('/riwayat-pengajuan/{id}', 'StatusPengajuanController@show');
 
     Route::resource('persetujuan', 'PersetujuanController');
 });
