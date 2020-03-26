@@ -1,7 +1,9 @@
 @extends('master')
 
 @section('title', 'Persetujuan Material Ditlog')
-
+@section('head-extra')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
 
 <div class="m-2 p-2" id="content">
@@ -25,8 +27,8 @@
             </tr>
           </thead>
           @foreach ($material_insert as $elemen_material_insert)
-          <tr class ='{{$elemen_material_insert->id_material}}'>
-          	<td hidden class='material-ID' value='{{$elemen_material_insert->id_material}}'></td>
+          <tr class ='insert{{$elemen_material_insert->id}}'>
+          	<td hidden class='material-insert-ID' value='{{$elemen_material_insert->id}}'></td>
             <td class='value item_material'>{{$elemen_material_insert->item_material}}</td>
             <td class='value volume'>{{$elemen_material_insert->volume}}</td>
             <td class='value satuan'>{{$elemen_material_insert->satuan}}</td>
@@ -39,8 +41,8 @@
             <td class='value komentar'>{{$elemen_material_insert->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-            	<button class='updateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_material_insert->id_material}}'>Update</button>
-            	<button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_material_insert->id_material}}'>Delete</button>
+            	<button class='declineInsertRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_insert->id}}'>X</button>
+            	<button class='agreeInsertRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_material_insert->id}}'>V</button>
               </div>
             </td>
           </tr>
@@ -61,8 +63,9 @@
             </tr>
           </thead>
           @foreach ($material_update as $elemen_material_update)
-          <tr class ='{{$elemen_material_update->id_material}}'>
-          	<td hidden class='material-ID' value='{{$elemen_material_update->id_material}}'></td>
+          <tr class ='update{{$elemen_material_update->id}}'>
+            <td hidden class='material-ID' value='{{$elemen_material_update->id}}'></td>
+            <td hidden class='material-update-ID' value='{{$elemen_material_update->id_material_update}}'></td>
             <td class='value item_material'>{{$elemen_material_update->item_material}}</td>
             <td class='value volume'>{{$elemen_material_update->volume}}</td>
             <td class='value harga_pembanding'>{{$elemen_material_update->harga_pembanding}}</td>
@@ -97,8 +100,9 @@
             </tr>
           </thead>
           @foreach ($material_delete as $elemen_material_delete)
-          <tr class ='{{$elemen_material_delete->id_material}}'>
-          	<td hidden class='material-ID' value='{{$elemen_material_delete->id_material}}'></td>
+          <tr class ='delete{{$elemen_material_delete->id_material}}'>
+            <td hidden class='material-ID' value='{{$elemen_material_delete->id}}'></td>
+            <td hidden class='material-delete-ID' value='{{$elemen_material_update->id_material_delete}}'></td>
             <td class='value item_material'>{{$elemen_material_delete->item_material}}</td>
             <td class='value volume'>{{$elemen_material_delete->volume}}</td>
             <td class='value satuan'>{{$elemen_material_delete->satuan}}</td>
@@ -125,4 +129,5 @@
 
 @section('script-end')
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/ditlog/penyetujuanmaterial.js') }}"></script>
 @endsection

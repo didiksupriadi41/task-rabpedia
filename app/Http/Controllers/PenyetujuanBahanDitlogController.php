@@ -44,7 +44,7 @@ class PenyetujuanBahanDitlogController extends Controller
     
             $bahan->save();
 
-            $this->delete_bahan_user($request);
+            $this->delete_bahan_insert_user($request);
     
             return response()->json([
                 'bahan' => ($bahan)
