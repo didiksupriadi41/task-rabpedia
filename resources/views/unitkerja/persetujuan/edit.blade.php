@@ -200,10 +200,11 @@ $jumlah_analisa_jlh_harga += $analisa_jlh_harga;
                                                 </tr>
                                                 <tr>
                                                     <td class="text-right" colspan="4">Dibulatkan</td>
-                                                    <?php
-$ratusan = substr(round($jumlah_analisa_jlh_harga * 1.1), -2);
-$akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100 - $ratusan);
-?>
+
+<?php
+  $ratusan = substr(round($jumlah_analisa_jlh_harga * 1.1), -2);
+  $akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100 - $ratusan); ?>
+
                                                     <td class="text-right">Rp {{ $akhir }}</td>
                                                 </tr>
                                                 <?php $loopiter += 1?>
@@ -233,10 +234,12 @@ $akhir = round($jumlah_analisa_jlh_harga * 1.1) + (100 - $ratusan);
                 </select>
                 <label for="komentar">Komentar:</label>
                 <textarea class="form-control" id="komentar" name="komentar" rows="8"></textarea>
-                <button type="submit" class="btn btn-success bg-primary px-3">
-                    <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
-                        Konfirmasi
-                </button>
+                <div class="row p-3">
+                    <button type="submit" class="btn btn-success bg-primary px-3">
+                        <span class="oi oi-spreadsheet" title="submit" aria-hidden="true"></span>
+                            Konfirmasi
+                    </button>
+                </div>
             </div>
         </form>
     </div>
