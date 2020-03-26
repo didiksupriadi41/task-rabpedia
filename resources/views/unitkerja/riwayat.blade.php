@@ -42,21 +42,22 @@
                                 @if($dtl_pngj->id_pengajuan == $pngj->id_pengajuan)
                                     <tbody>
                                         <tr>
-                                            @foreach($pekerjaan as $pkj)
-                                                @if($dtl_pngj->id_pekerjaan == $pkj->id)
-                                                    <?php $i += 1;?>
-                                                    <th scope="row"> {{ $i }} </th>
-                                                    <td>{{ $pkj->jenis_pekerjaan }}</td>
-                                                @endif
-                                            @endforeach
-                                            <td class="text-right">{{ $dtl_pngj->volume }} {{$pkj->satuan}}</td>
-                                            <td class="text-right">Rp {{ $dtl_pngj->jumlah_harga }}</td>
+                                            <?php $i += 1;?>
+                                            <th scope="row"> {{ $i }} </th>
+                                            <td>{{ $dtl_pngj->nama_pekerjaan }}</td>
+                                            <td class="text-right">{{ $dtl_pngj->volume }} {{$dtl_pngj->satuan}}</td>
+                                            <td class="text-right">Rp {{ $dtl_pngj->harga_satuan }}</td>
                                         </tr>
                                     </tbody>
                                 @endif
                             @endforeach
                         </table>
                         <div class="text-right">
+                            <a href="/riwayat-pengajuan/{{ $pngj->id_pengajuan }}">
+                                <button type="button" class="btn btn-secondary">
+                                    Detail
+                                </button>
+                            </a>
                             <button type="button" class="btn btn-success">
                                 <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
                                 Download RAB
