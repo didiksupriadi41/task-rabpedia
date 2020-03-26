@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Material;
 use \App\PengajuanMaterialInsert;
+use \App\PengajuanMaterialDelete;
 
 class PenambahanMaterialDitlogController extends Controller
 {
@@ -28,7 +29,18 @@ class PenambahanMaterialDitlogController extends Controller
     		'material_satuan' => ($material_satuan),
     		'material_cabang' => ($material_cabang)
     	]);
-    }
+	}
+	
+	public function show_list_delete_material_user(){
+    	$material = Material::all();
+    	$material_satuan = Material::select('satuan')->distinct()->get();
+    	$material_cabang = Material::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.delete.user.material', [
+    		'material' => ($material), 
+    		'material_satuan' => ($material_satuan),
+    		'material_cabang' => ($material_cabang)
+    	]);
+	}
 
     public function deleteMaterial(Request $request){
     	$id_material = $request->id_material;
@@ -39,7 +51,27 @@ class PenambahanMaterialDitlogController extends Controller
 
     	return response()->json([
     	]);
-    }
+	}
+	
+	public function deleteMaterialUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_material_delete' => 'required', 
+			'id_pengaju' => 'required',
+			'komentar' => 'required',
+    	]);
+
+    	$material = new PengajuanMaterialDelete;
+
+    	$material->id_material_delete = $request->id_material_delete;
+		$material->id_pengaju = $request->id_pengaju;
+		$material->komentar = $request->komentar;
+
+    	$material->save();
+
+    	return response()->json([
+    		'material' => ($material)
+    	]);
+	}
 
     public function storeMaterial(Request $request){
     	$validatedData = $request->validate([

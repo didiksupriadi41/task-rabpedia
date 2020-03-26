@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Pengurangan Bahan User')
+@section('title', 'Pengurangan Material User')
 
 @section('head-extra')
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -9,30 +9,36 @@
 @section('content')
 
 <div class="m-2 p-2" id="content">
-	<h1 class="text-center mb-4" id="title">List Bahan Pekerjaan</h1>
+	<h1 class="text-center mb-4" id="title">List Material Pekerjaan</h1>
     <div id="mainContent">
     	<table class="table table-hover table-striped table-bordered p-5">   
           <thead class="bg-info">
             <tr class="contentHeader">
-              <th class="attribute text-light font-weight-bold">Jenis Bahan Bangunan</th>
-              <th class="attribute text-light font-weight-bold">Satuan</th> 
+              <th class="attribute text-light font-weight-bold">Item Material</th>
+              <th class="attribute text-light font-weight-bold">Volume</th>
+              <th class="attribute text-light font-weight-bold">Satuan</th>
+              <th class="attribute text-light font-weight-bold">Harga Pembanding</th>
+              <th class="attribute text-light font-weight-bold">Harga Saat Ini</th> 
               <th class="attribute text-light font-weight-bold">Harga Satuan</th>
-              <th class="attribute text-light font-weight-bold">Kelompok Bahan</th>
+              <th class="attribute text-light font-weight-bold">Keterangan Tambahan</th>
               <th class="attribute text-light font-weight-bold">Cabang ITB</th>
               <th class="attribute"></th>
             </tr>
           </thead>
-        @foreach ($bahan as $elemen_bahan)
-          <tr class ='{{$elemen_bahan->id_bahan}}'>
-          	<td hidden class='bahan-ID' value='{{$elemen_bahan->id_bahan}}'></td>
-            <td class='value jenis_bahan_bangunan'>{{$elemen_bahan->jenis_bahan_bangunan}}</td>
-            <td class='value satuan'>{{$elemen_bahan->satuan}}</td>
-            <td class='value harga_satuan'>{{$elemen_bahan->harga_satuan}}</td>
-            <td class='value kelompok_bahan'>{{$elemen_bahan->kelompok_bahan}}</td>
-            <td class='value cabang_itb'>{{$elemen_bahan->cabang_itb}}</td>
+          @foreach ($material as $elemen_material)
+          <tr class ='{{$elemen_material->id_material}}'>
+          	<td hidden class='material-ID' value='{{$elemen_material->id_material}}'></td>
+            <td class='value item_material'>{{$elemen_material->item_material}}</td>
+            <td class='value volume'>{{$elemen_material->volume}}</td>
+            <td class='value satuan'>{{$elemen_material->satuan}}</td>
+            <td class='value harga_pembanding'>{{$elemen_material->harga_pembanding}}</td>
+            <td class='value harga_saat_ini'>{{$elemen_material->harga_saat_ini}}</td>
+            <td class='value harga_satuan'>{{$elemen_material->harga_satuan}}</td>
+            <td class='value keterangan_tambahan'>{{$elemen_material->keterangan_tambahan}}</td>
+            <td class='value cabang_itb'>{{$elemen_material->cabang_itb}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-              	<button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="modal" data-modal-id="{{$elemen_bahan->id_bahan}}" data-target="#modalDelete" aria-pressed="false" id="{{$elemen_bahan->id_bahan}}">Delete</button>
+                <button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="modal" data-modal-id="{{$elemen_material->id_material}}" data-target="#modalDelete" aria-pressed="false" id="{{$elemen_material->id_material}}">Delete</button>
               </div>
             </td>
           </tr>
@@ -76,5 +82,5 @@
 
 @section('script-end')
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{ asset('js/user/penambahanbahan.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/user/penambahanmaterial.js') }}"></script>
 @endsection

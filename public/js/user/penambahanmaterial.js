@@ -30,17 +30,21 @@
             });
         });
         $("table").on('click', '.deleteRow', function(){
-            id_material = $(this).parent().parent().parent().find("td.material-ID:first").attr("value");
-            $.ajax({
-                url:'/deleterowmaterialditlog',
-                type:"POST",
-                data: "id_material=" + id_material,
-                success: function(data){
-                    $("."+id_material).remove();
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
+            id_bahan = $(this).parent().parent().parent().find("td.material-ID:first").attr("value");
+            $("#deleteButton").on('click', function(){
+                id_pengaju = $("#id_pengaju").val();
+                komentar = $('#komentar').val();
+                $.ajax({
+                    url:'/deleterowmaterialuser',
+                    type:"POST",
+                    data: "id_material_delete=" + id_bahan + "&id_pengaju=" + id_pengaju + "&komentar=" + komentar,
+                    success: function(data){
+                        console.log(data)
+                    }, error: function(response){
+                        console.log(response);
+                    }
+                });
+            })
         });
         $("table").on('click', '.updateRow', function(){
             id_material = $(this).parent().parent().parent().find("td.material-ID:first").attr("value");
