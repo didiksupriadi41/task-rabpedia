@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Pengeditan Bahan User')
+@section('title', 'Pengeditan Material User')
 
 @section('head-extra')
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -9,30 +9,36 @@
 @section('content')
 
 <div class="m-2 p-2" id="content">
-	<h1 class="text-center mb-4" id="title">List Bahan Pekerjaan</h1>
+	<h1 class="text-center mb-4" id="title">List Material Pekerjaan</h1>
     <div id="mainContent">
     	<table class="table table-hover table-striped table-bordered p-5">   
           <thead class="bg-info">
-            <tr class="contentHeader">
-              <th class="attribute text-light font-weight-bold">Jenis Bahan Bangunan</th>
-              <th class="attribute text-light font-weight-bold">Satuan</th> 
+          <tr class="contentHeader">
+              <th class="attribute text-light font-weight-bold">Item Material</th>
+              <th class="attribute text-light font-weight-bold">Volume</th>
+              <th class="attribute text-light font-weight-bold">Satuan</th>
+              <th class="attribute text-light font-weight-bold">Harga Pembanding</th>
+              <th class="attribute text-light font-weight-bold">Harga Saat Ini</th> 
               <th class="attribute text-light font-weight-bold">Harga Satuan</th>
-              <th class="attribute text-light font-weight-bold">Kelompok Bahan</th>
+              <th class="attribute text-light font-weight-bold">Keterangan Tambahan</th>
               <th class="attribute text-light font-weight-bold">Cabang ITB</th>
               <th class="attribute"></th>
             </tr>
           </thead>
-        @foreach ($bahan as $elemen_bahan)
-          <tr class ='{{$elemen_bahan->id_bahan}}'>
-          	<td hidden class='bahan-ID' value='{{$elemen_bahan->id_bahan}}'></td>
-            <td class='value jenis_bahan_bangunan'><input type='text' value="{{$elemen_bahan->jenis_bahan_bangunan}}"></td>
-            <td class='value satuan'>{{$elemen_bahan->satuan}}</td>
-            <td class='value harga_satuan'><input type='number' value="{{$elemen_bahan->harga_satuan}}"></td>
-            <td class='value kelompok_bahan'>{{$elemen_bahan->kelompok_bahan}}</td>
-            <td class='value cabang_itb'>{{$elemen_bahan->cabang_itb}}</td>
+          @foreach ($material as $elemen_material)
+          <tr class ='{{$elemen_material->id_material}}'>
+          	<td hidden class='material-ID' value='{{$elemen_material->id_material}}'></td>
+            <td class='value item_material'><input type='text' value="{{$elemen_material->item_material}}"></td>
+            <td class='value volume'><input type='number' value="{{$elemen_material->volume}}"></td>
+            <td class='value satuan'>{{$elemen_material->satuan}}</td>
+            <td class='value harga_pembanding'><input type='number' value="{{$elemen_material->harga_pembanding}}"></td>
+            <td class='value harga_saat_ini'><input type='number' value="{{$elemen_material->harga_saat_ini}}"></td>
+            <td class='value harga_satuan'><input type='number' value="{{$elemen_material->harga_satuan}}"></td>
+            <td class='value keterangan_tambahan'>{{$elemen_material->keterangan_tambahan}}</td>
+            <td class='value cabang_itb'>{{$elemen_material->cabang_itb}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-              	<button class='editRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="modal" data-modal-id="{{$elemen_bahan->id_bahan}}" data-target="#modalEdit" aria-pressed="false" id="{{$elemen_bahan->id_bahan}}">Edit</button>
+                <button class='editRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="modal" data-modal-id="{{$elemen_material->id_material}}" data-target="#modalEdit" aria-pressed="false" id="{{$elemen_material->id_material}}">Edit</button>
               </div>
             </td>
           </tr>
@@ -76,5 +82,5 @@
 
 @section('script-end')
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{ asset('js/user/penambahanbahan.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/user/penambahanmaterial.js') }}"></script>
 @endsection

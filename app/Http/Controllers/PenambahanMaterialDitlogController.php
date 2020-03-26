@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Material;
 use \App\PengajuanMaterialInsert;
 use \App\PengajuanMaterialDelete;
+use \App\PengajuanMaterialUpdate;
 
 class PenambahanMaterialDitlogController extends Controller
 {
@@ -36,6 +37,17 @@ class PenambahanMaterialDitlogController extends Controller
     	$material_satuan = Material::select('satuan')->distinct()->get();
     	$material_cabang = Material::select('cabang_itb')->distinct()->get();
     	return view('unitkerja.delete.user.material', [
+    		'material' => ($material), 
+    		'material_satuan' => ($material_satuan),
+    		'material_cabang' => ($material_cabang)
+    	]);
+	}
+
+	public function show_list_edit_material_user(){
+    	$material = Material::all();
+    	$material_satuan = Material::select('satuan')->distinct()->get();
+    	$material_cabang = Material::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.edit.user.material', [
     		'material' => ($material), 
     		'material_satuan' => ($material_satuan),
     		'material_cabang' => ($material_cabang)
@@ -152,6 +164,35 @@ class PenambahanMaterialDitlogController extends Controller
     	$material->harga_saat_ini = $request->harga_saat_ini;
     	$material->harga_satuan = $request->harga_satuan;
     	$material->keterangan_tambahan = $request->keterangan_tambahan;
+
+    	$material->save();
+
+    	return response()->json([
+    		'material' => ($material) 
+    	]);
+	}
+	
+	public function updateMaterialUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_material_update' => 'required',
+    		'item_material' => 'required',
+    		'harga_pembanding' => 'required', 
+    		'harga_saat_ini' => 'required',  
+			'harga_satuan' => 'required',
+			'id_pengaju' => 'required',
+			'komentar' => 'required'
+    	]);
+
+		$material = new PengajuanMaterialUpdate;
+		
+		$material->id_material_update = $request->id_material_update;
+    	$material->item_material = $request->item_material;
+    	$material->volume = $request->volume;
+    	$material->harga_pembanding = $request->harga_pembanding;
+    	$material->harga_saat_ini = $request->harga_saat_ini;
+    	$material->harga_satuan = $request->harga_satuan;
+		$material->id_pengaju = $request->id_pengaju;
+		$material->komentar = $request->komentar;
 
     	$material->save();
 
