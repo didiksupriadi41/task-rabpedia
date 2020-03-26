@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Bahan;
 use \App\PengajuanBahanInsert;
 use \App\PengajuanBahanUpdate;
 use \App\PengajuanBahanDelete;
@@ -21,5 +22,43 @@ class PenyetujuanBahanDitlogController extends Controller
     		'bahan_update' => ($bahan_update),
     		'bahan_delete' => ($bahan_delete)
     	]);
-    }
+        }
+
+        public function insert_bahan_insert_user(Request $request){
+            $validatedData = $request->validate([
+                'id' => 'required',
+                'jenis_bahan_bangunan' => 'required', 
+                'satuan' => 'required', 
+                'harga_satuan' => 'required',
+                'kelompok_bahan' => 'required', 
+                'cabang_itb' => 'required' 
+            ]);
+    
+            $bahan = new Bahan;
+    
+            $bahan->jenis_bahan_bangunan = $request->jenis_bahan_bangunan;
+            $bahan->satuan = $request->satuan;
+            $bahan->harga_satuan = $request->harga_satuan;
+            $bahan->kelompok_bahan = $request->kelompok_bahan;
+            $bahan->cabang_itb = $request->cabang_itb;
+    
+            $bahan->save();
+
+            $this->delete_bahan_user($request);
+    
+            return response()->json([
+                'bahan' => ($bahan)
+            ]); 
+        }
+
+        public function delete_bahan_insert_user(Request $request){
+            $id = $request->id;
+            $bahan_deleted = PengajuanBahanInsert::where([
+                ['id', '=', $id]
+            ])->delete();
+    
+            return response()->json([
+            ]);
+        }
+
 }
