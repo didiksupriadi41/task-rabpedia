@@ -87,8 +87,9 @@
             </tr>
           </thead>
           @foreach ($bahan_delete as $elemen_bahan_delete)
-          <tr class ='{{$elemen_bahan_delete->id}}'>
-            <td hidden class='bahan-ID' value='{{$elemen_bahan_delete->id_bahan_delete}}'></td>
+          <tr class ='delete{{$elemen_bahan_delete->id}}'>
+            <td hidden class='bahan-ID' value='{{$elemen_bahan_delete->id}}'></td>
+            <td hidden class='bahan-delete-ID' value='{{$elemen_bahan_delete->id_bahan}}'></td>
             <td class='value jenis_bahan_bangunan'>{{$elemen_bahan_delete->jenis_bahan_bangunan}}</td>
             <td class='value satuan'>{{$elemen_bahan_delete->satuan}}</td>
             <td class='value harga_satuan'>{{$elemen_bahan_delete->harga_satuan}}</td>
@@ -98,8 +99,8 @@
             <td class='value komentar'>{{$elemen_bahan_delete->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-              	<button class='updateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_delete->id}}'>Update</button>
-              	<button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_delete->id}}'>Delete</button>
+              	<button class='declineDeleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_delete->id}}'>X</button>
+              	<button class='agreeDeleteRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_bahan_delete->id}}'>V</button>
               </div>
             </td>
           </tr>

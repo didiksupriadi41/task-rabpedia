@@ -72,6 +72,21 @@ class PenyetujuanBahanDitlogController extends Controller
                 'bahan' => ($bahan) 
             ]);    
         }
+
+        public function insert_bahan_delete_user(Request $request){
+            $id = $request->id;
+            $id_bahan = $request->id_bahan;
+
+            $this->delete_bahan_delete_user($request);
+
+            $bahan_deleted = Bahan::where([
+                ['id_bahan', '=', $id_bahan]
+            ])->delete();
+    
+
+            return response()->json([
+            ]);    
+        }
     
         public function delete_bahan_insert_user(Request $request){
             $id = $request->id;
@@ -86,6 +101,16 @@ class PenyetujuanBahanDitlogController extends Controller
         public function delete_bahan_update_user(Request $request){
             $id = $request->id;
             $bahan_deleted = PengajuanBahanUpdate::where([
+                ['id', '=', $id]
+            ])->delete();
+    
+            return response()->json([
+            ]);
+        }
+
+        public function delete_bahan_delete_user(Request $request){
+            $id = $request->id;
+            $bahan_deleted = PengajuanBahanDelete::where([
                 ['id', '=', $id]
             ])->delete();
     

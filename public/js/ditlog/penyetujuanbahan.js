@@ -38,6 +38,21 @@ $(document).ready(function(){
             }
         });
     });
+    $("table").on('click', '.agreeDeleteRow', function(){
+        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
+        id_bahan = $(this).parent().parent().parent().find("td.bahan-delete-ID").attr("value");
+        console.log(id_bahan);
+        $.ajax({
+            url:'/insertfrombahandeleteditlog',
+            type:"POST",
+            data: "id=" + id + "&id_bahan=" + id_bahan,
+            success: function(data){
+                $(".delete"+id).remove();
+            }, error: function(response){
+                console.log(response);
+            }
+        });
+    });
     $("table").on('click', '.declineInsertRow', function(){
         id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
         $.ajax({
@@ -60,6 +75,19 @@ $(document).ready(function(){
             data: "id=" + id,
             success: function(data){
                 $(".update"+id).remove();
+            }, error: function(response){
+                console.log(response);
+            }
+        });
+    });
+    $("table").on('click', '.declineDeleteRow', function(){
+        id = $(this).parent().parent().parent().find("td.bahan-ID").attr("value");
+        $.ajax({
+            url:'/deletefrombahandeleteditlog',
+            type:"POST",
+            data: "id=" + id,
+            success: function(data){
+                $(".delete"+id).remove();
             }, error: function(response){
                 console.log(response);
             }
