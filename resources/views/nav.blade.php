@@ -19,6 +19,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/penambahan-katalog">Penambahan</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/penambahan-ditlog">Penambahan Ditlog</a>
+            </li>
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item active">
