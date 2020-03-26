@@ -22,7 +22,7 @@ class PersetujuanController extends Controller
         // dump($detail_pengajuan);
         $pekerjaan = Pekerjaan::all();
         // dump($pekerjaan);
-      $pengajuan = Pengajuan::all();
+        $pengajuan = Pengajuan::all();
       return view('unitkerja.persetujuan.index', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
     }
 
@@ -88,7 +88,7 @@ class PersetujuanController extends Controller
       $pengajuan->status_pengajuan = request('status_pengajuan');
       $pengajuan->save();
 
-      return redirect('/persetujuan/');
+      return redirect('/riwayat-pengajuan/' . $id);
     }
 
     /**
