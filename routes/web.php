@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penambahan-material-user', 'PenambahanMaterialDitlogController@show_list_material_user');    
     Route::get('/pengurangan-bahan-user', 'PenambahanBahanDitlogController@show_list_delete_bahan_user');        
     Route::get('/pengurangan-material-user', 'PenambahanMaterialDitlogController@show_list_delete_material_user');
+    Route::get('/pengurangan-upah-user', 'PenambahanUpahDitlogController@show_list_delete_upah_user');
 
     Route::resource('persetujuan', 'PersetujuanController');
 });
@@ -59,6 +60,7 @@ Route::post('/deleterowbahanuser', 'PenambahanBahanDitlogController@deleteBahanU
 Route::post('/insertrowmaterialuser', 'PenambahanMaterialDitlogController@storeMaterialUser');
 Route::post('/deleterowmaterialuser', 'PenambahanMaterialDitlogController@deleteMaterialUser');
 Route::post('/insertrowupahuser', 'PenambahanUpahDitlogController@storeUpahUser');
+Route::post('/deleterowupahuser', 'PenambahanUpahDitlogController@deleteUpahUser');
 
 Route::post('/deleterowanalisa', 'PenambahanKatalogJasaController@deleteAnalisa');
 Route::post('/insertrowanalisa', 'PenambahanKatalogJasaController@storeAnalisa');

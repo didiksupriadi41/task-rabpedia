@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Upah;
 use \App\PengajuanUpahInsert;
+use \App\PengajuanUpahDelete;
 
 class PenambahanUpahDitlogController extends Controller
 {
@@ -28,7 +29,18 @@ class PenambahanUpahDitlogController extends Controller
     		'upah_satuan' => ($upah_satuan), 
     		'upah_cabang' => ($upah_cabang)
     	]);
-    }
+	}
+
+	public function show_list_delete_upah_user(){
+    	$upah = Upah::all();
+    	$upah_satuan = Upah::select('satuan')->distinct()->get();
+    	$upah_cabang = Upah::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.delete.user.upah', [
+    		'upah' => ($upah), 
+    		'upah_satuan' => ($upah_satuan), 
+    		'upah_cabang' => ($upah_cabang)
+    	]);
+	}
 
     public function deleteUpah(Request $request){
     	$id_upah = $request->id_upah;
@@ -39,7 +51,27 @@ class PenambahanUpahDitlogController extends Controller
 
     	return response()->json([
     	]);
-    }
+	}
+	
+	public function deleteUpahUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_upah_delete' => 'required', 
+			'id_pengaju' => 'required',
+			'komentar' => 'required',
+    	]);
+
+    	$upah = new PengajuanUpahDelete;
+
+    	$upah->id_upah_delete = $request->id_upah_delete;
+		$upah->id_pengaju = $request->id_pengaju;
+		$upah->komentar = $request->komentar;
+
+    	$upah->save();
+
+    	return response()->json([
+    		'upah' => ($upah)
+    	]);
+	}
 
     public function storeUpah(Request $request){
     	$validatedData = $request->validate([

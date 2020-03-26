@@ -26,17 +26,21 @@
             });
         });
         $("table").on('click', '.deleteRow', function(){
-            id_upah = $(this).parent().parent().parent().find("td.upah-ID:first").attr("value");
-            $.ajax({
-                url:'/deleterowupahditlog',
-                type:"POST",
-                data: "id_upah=" + id_upah,
-                success: function(data){
-                    $("."+id_upah).remove();
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
+            id_bahan = $(this).parent().parent().parent().find("td.upah-ID:first").attr("value");
+            $("#deleteButton").on('click', function(){
+                id_pengaju = $("#id_pengaju").val();
+                komentar = $('#komentar').val();
+                $.ajax({
+                    url:'/deleterowupahuser',
+                    type:"POST",
+                    data: "id_upah_delete=" + id_bahan + "&id_pengaju=" + id_pengaju + "&komentar=" + komentar,
+                    success: function(data){
+                        console.log(data)
+                    }, error: function(response){
+                        console.log(response);
+                    }
+                });
+            })
         });
         $("table").on('click', '.updateRow', function(){
             id_upah = $(this).parent().parent().parent().find("td.upah-ID:first").attr("value");
