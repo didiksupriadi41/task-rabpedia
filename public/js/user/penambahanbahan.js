@@ -27,16 +27,20 @@
         });
         $("table").on('click', '.deleteRow', function(){
             id_bahan = $(this).parent().parent().parent().find("td.bahan-ID:first").attr("value");
-            $.ajax({
-                url:'/deleterowbahanditlog',
-                type:"POST",
-                data: "id_bahan=" + id_bahan,
-                success: function(data){
-                    $("."+id_bahan).remove();
-                }, error: function(response){
-                    console.log(response);
-                }
-            });
+            $("#deleteButton").on('click', function(){
+                id_pengaju = $("#id_pengaju").val();
+                komentar = $('#komentar').val();
+                $.ajax({
+                    url:'/deleterowbahanuser',
+                    type:"POST",
+                    data: "id_bahan_delete=" + id_bahan + "&id_pengaju=" + id_pengaju + "&komentar=" + komentar,
+                    success: function(data){
+                        console.log(data)
+                    }, error: function(response){
+                        console.log(response);
+                    }
+                });
+            })
         });
         $("table").on('click', '.updateRow', function(){
             id_bahan = $(this).parent().parent().parent().find("td.bahan-ID:first").attr("value");

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Bahan;
 use \App\PengajuanBahanInsert;
+use \App\PengajuanBahanDelete;
 
 class PenambahanBahanDitlogController extends Controller
 {
@@ -32,6 +33,19 @@ class PenambahanBahanDitlogController extends Controller
     		'bahan_kelompok' => ($bahan_kelompok),  
     		'bahan_cabang' => ($bahan_cabang)
     	]);
+	}
+
+	public function show_list_delete_bahan_user(){
+    	$bahan = Bahan::all();
+    	$bahan_satuan = Bahan::select('satuan')->distinct()->get();
+    	$bahan_kelompok = Bahan::select('kelompok_bahan')->distinct()->get();
+    	$bahan_cabang = Bahan::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.delete.user.bahan', [
+    		'bahan' => ($bahan), 
+    		'bahan_satuan' => ($bahan_satuan),
+    		'bahan_kelompok' => ($bahan_kelompok),  
+    		'bahan_cabang' => ($bahan_cabang)
+    	]);
     }
 
     public function deleteBahan(Request $request){
@@ -43,7 +57,27 @@ class PenambahanBahanDitlogController extends Controller
 
     	return response()->json([
     	]);
-    }
+	}
+	
+	public function deleteBahanUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_bahan_delete' => 'required', 
+			'id_pengaju' => 'required',
+			'komentar' => 'required',
+    	]);
+
+    	$bahan = new PengajuanBahanDelete;
+
+    	$bahan->id_bahan_delete = $request->id_bahan_delete;
+		$bahan->id_pengaju = $request->id_pengaju;
+		$bahan->komentar = $request->komentar;
+
+    	$bahan->save();
+
+    	return response()->json([
+    		'bahan' => ($bahan)
+    	]);
+	}
 
     public function storeBahan(Request $request){
     	$validatedData = $request->validate([
