@@ -1,7 +1,9 @@
 @extends('master')
 
 @section('title', 'Persetujuan Upah Ditlog')
-
+@section('head-extra')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
 
 <div class="m-2 p-2" id="content">
@@ -21,8 +23,8 @@
             </tr>
           </thead>
           @foreach ($upah_insert as $elemen_upah_insert)
-          <tr class ='{{$elemen_upah_insert->id_upah}}'>
-          	<td hidden class='upah-ID' value='{{$elemen_upah_insert->id_upah}}'></td>
+          <tr class ='insert{{$elemen_upah_insert->id}}'>
+            <td hidden class='upah-insert-ID' value='{{$elemen_upah_insert->id}}'></td>
             <td class='value jenis_pekerja'>{{$elemen_upah_insert->jenis_pekerja}}</td>
             <td class='value satuan'>{{$elemen_upah_insert->satuan}}</td>
             <td class='value harga_satuan'>{{$elemen_upah_insert->harga_satuan}}</td>
@@ -31,8 +33,8 @@
             <td class='value komentar'>{{$elemen_upah_insert->komentar}}</td>
             <td class='changeDBButton'>
               <div class="btn-group btn-group-sm" role="group" aria-label="changeDBButtons">
-              	<button class='updateRow btn btn-secondary btn-success btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_insert->id}}'>Update</button>
-              	<button class='deleteRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_insert->id}}'>Delete</button>
+              	<button class='declineInsertRow btn btn-secondary btn-danger btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_insert->id}}'>X</button>
+              	<button class='agreeInsertRow btn btn-secondary btn-success btn-sm text-light font-weight-bold m-2' data-toggle="button" aria-pressed="false" id='{{$elemen_upah_insert->id}}'>V</button>
               </div>
             </td>
           </tr>
@@ -103,4 +105,5 @@
 
 @section('script-end')
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/ditlog/penyetujuanupah.js') }}"></script>
 @endsection
