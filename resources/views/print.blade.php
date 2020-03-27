@@ -28,20 +28,6 @@ $kategotiII = "empty";
 ?>
     <?php $iter = 1;?>
     @foreach($detail_pengajuan as $dtl_pngj)
-        @if($kategotiI != $dtl_pngj->kategori_I)
-            <th style="font-size: large;" colspan="9">{{ $dtl_pngj->kategori_I }}</th>
-            <?php $kategotiI = $dtl_pngj->kategori_I?>
-            @if($kategotiII != $dtl_pngj->kategori_II)
-                <!-- <th></th> -->
-                <tr>
-                    <th style="font-size: small;" colspan="9">{{ $dtl_pngj->kategori_II }}</th>
-                </tr>
-                <!-- <th></th>   <th></th>   <th></th>   <th></th>   <th></th>   <th></th>   <th></th> -->
-                <?php $iter = 1;?>
-                <?php $kategotiII = $dtl_pngj->kategori_II?>
-            @endif
-        @endif
-
         <tbody>
             <?php $jumlah_analisa_jlh_harga = 0;?>
                 <tr>
