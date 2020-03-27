@@ -8,6 +8,16 @@
     <h1 class="text-center mb-4" id="title">List Katalog Pekerjaan</h1>
     <div id="mainContent">
 
+    <form id="searchPekerjaan" action="{{ url('lihat-katalog/search')}}" method="GET">
+        {{ csrf_field() }}
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+
+            <input class="form-control mb-4" type="text" placeholder="Search Jenis Pekerjaan" aria-label="Search" id='search_pekerjaan' name='search_pekerjaan' value="{{ old('search_pekerjaan') }}">
+                <button class="btn btn-primary btn-block" type="submit">Search</button>
+            </a>
+        </div>
+    </form>
+
     @foreach ($list_kategori as $kategori)
 		<div class="accordion my-1" id='{{$kategori["ID Kategori"]}}'>
             <div class="card">
@@ -38,5 +48,18 @@
     @endforeach
     </div>
 </div>
+
+<!-- The function that submits the form-->
+<script type="text/javascript">
+function submitform()
+{
+    if(document.myform.onsubmit())
+    {
+        console.log("HHHH");
+    }
+}
+
+</script>
+
 
 @endsection
