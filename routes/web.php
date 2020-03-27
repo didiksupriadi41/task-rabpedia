@@ -87,6 +87,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/riwayat-pengajuan/{id}', 'StatusPengajuanController@show');
+    Route::get('/persetujuan/{id}/pdf','PersetujuanController@export_pdf');
     Route::resource('persetujuan', 'PersetujuanController');
 });
 
