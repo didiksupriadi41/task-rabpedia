@@ -5,10 +5,10 @@
 @section('content')
 <div class="container">
     <div class="row p-3">
-        <button type="button" class="btn btn-success bg-primary px-5">
+        <a href="../persetujuan/{{ $pengajuan['id_pengajuan'] }}/pdf" type="button" class="btn btn-success bg-primary px-5">
             <span class="oi oi-spreadsheet" title="spreadsheet" aria-hidden="true"></span>
                 Print
-        </button>
+        </a>
     </div>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
