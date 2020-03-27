@@ -2,9 +2,9 @@
 
 @section('title', 'Penambahan Katalog Jasa')
 
-@section('head-extra')
+{{-- @section('head-extra')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
+@endsection --}}
 
 @section('content')
 
@@ -26,44 +26,51 @@
             </div>
 
             <div class="card-body">
-                <input hidden class='pekerjaanid' value='{{$pekerjaan["id"]}}'>
-                <input hidden class='pekerjaanid_pekerjaan' value='{{$pekerjaan["id_pekerjaan"]}}'>
-                <input hidden class='pekerjaancabang_itb' value='{{$pekerjaan["cabang_itb"]}}'>
-                <table class="table table-hover p-5">
-                    <tr class="contentHeader">
-                        <th class="attribute">Bahan-Upah-Material</th>
-                        <th class="attribute">Koefisien</th>
-                        <th class="attribute">Satuan</th>
-                        <th class="attribute">Harga Satuan</th>
-                        <th class="attribute"></th>
-                    </tr>
-                    @foreach ($pekerjaan["analisis"] as $analisis)
-                    <tr class='{{$analisis["Tipe"].$analisis["ID"]}}'>
-                        <td hidden class='analisis-tipe' value="{{$analisis['Tipe']}}"></td>
-                        <td hidden class='analisis-ID' value="{{$analisis['ID']}}"></td>
-                        <td class='value'>{{$analisis["Bahan-Upah-Material"]}}</td>
-                        <td class='value'><input class="form-control form-control-sm" type="number"
-                                value='{{$analisis["Koefisien"]}}'></td>
-                        <td class='value'>{{$analisis["Satuan"]}}</td>
-                        <td class='value'>{{$analisis["Harga Satuan"]}}</td>
-                        <td class='changeDBButton'>
-                            <button class='btn btn-secondary btn-danger btn-sm text-light font-weight-bold'
-                                id='{{$analisis["Tipe"].$analisis["ID"]}}'>Delete
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-                <div class="d-flex">
-                    <button class="w-50 mr-2 rounded btn btn-primary flex-fill" value='{{$pekerjaan["id"]}}'
-                        id='addBahanUpahMaterial{{$pekerjaan["id"]}}' data-toggle="modal"
-                        data-target="#ModalInsertAnalisa">
-                        <span class="font-weight-bold">Tambahkan Analisa</span>
-                    </button>
-                    <button class="w-50 ml-2 rounded btn btn-success flex-fill">
-                        <span class="font-weight-bold">Ajukan Perubahan</span>
-                    </button>
-                </div>
+                <form action="{{url('/pengajuan-analisa-user/'.$pekerjaan['id'])}}" method="post">
+                    {{ csrf_field() }}
+                    <table id="table-analisa" class="table table-hover p-5">
+                        <tr class="contentHeader">
+                            <th class="attribute">Bahan-Upah-Material</th>
+                            <th class="attribute">Koefisien</th>
+                            <th class="attribute">Satuan</th>
+                            <th class="attribute">Harga Satuan</th>
+                            <th class="attribute"></th>
+                        </tr>
+                        @foreach ($pekerjaan["analisis"] as $analisis)
+                        <tr id='row-{{$analisis["Tipe"].$analisis["ID"]}}'>
+                            <td hidden><input hidden name='data[{{$analisis["Tipe"].$analisis["ID"]}}][jenis_analisa]'
+                                    value="{{$analisis['Tipe']}}" /></td>
+                            <td hidden><input hidden name='data[{{$analisis["Tipe"].$analisis["ID"]}}][id_analisa]'
+                                    value="{{$analisis['ID']}}" /></td>
+
+                            <td class='value'>{{$analisis["Bahan-Upah-Material"]}}</td>
+                            <td class='value'>
+                                <input class='form-control form-control-sm' type='number'
+                                    name='data[{{$analisis["Tipe"].$analisis["ID"]}}][koefisien]'
+                                    value='{{$analisis["Koefisien"]}}'>
+                            </td>
+                            <td class='value'>{{$analisis["Satuan"]}}</td>
+                            <td class='value'>{{$analisis["Harga Satuan"]}}</td>
+                            <td class='changeDBButton'>
+                                <button type="button"
+                                    class='delete-row btn btn-secondary btn-danger btn-sm text-light font-weight-bold'
+                                    id='{{$analisis["Tipe"].$analisis["ID"]}}'>Delete
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    <div class="d-flex">
+                        <button class="w-50 mr-2 rounded btn btn-primary flex-fill" value='{{$pekerjaan["id"]}}'
+                            id='addBahanUpahMaterial{{$pekerjaan["id"]}}' data-toggle="modal"
+                            data-target="#ModalInsertAnalisa" type="button">
+                            <span class="font-weight-bold">Tambahkan Analisa</span>
+                        </button>
+                        <button class="w-50 ml-2 rounded btn btn-success flex-fill" type="submit">
+                            <span class="font-weight-bold">Ajukan Perubahan</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -71,7 +78,7 @@
 </div>
 
 <!-- Modal Insert Analisa-->
-{{-- <div class="modal fade" id="ModalInsertAnalisa" tabindex="-1" role="dialog" aria-labelledby="ModalInsertAnalisa"
+<div class="modal fade" id="ModalInsertAnalisa" tabindex="-1" role="dialog" aria-labelledby="ModalInsertAnalisa"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -139,10 +146,10 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 
 @endsection
 @section('script-end')
-{{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{ asset('js/ditlog/penambahanpekerjaan.js') }}"></script> --}}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/user/pengajuanAnalisa.js') }}"></script>
 @endsection

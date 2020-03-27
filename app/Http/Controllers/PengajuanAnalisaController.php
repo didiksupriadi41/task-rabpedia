@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\AnalisaBahan;
 use App\AnalisaMaterial;
 use App\AnalisaUpah;
+use App\Bahan;
+use App\Material;
 use App\Pekerjaan;
+use App\Upah;
 use Illuminate\Http\Request;
 
 function mapping($template, $content)
@@ -25,6 +28,10 @@ class PengajuanAnalisaController extends Controller
 
         $pekerjaan = Pekerjaan::find($id)->toArray();
         $pekerjaan['analisis'] = [];
+
+        $bahan = Bahan::all();
+        $upah = Upah::all();
+        $material = Material::all();
 
         $list_analisa_bahan = AnalisaBahan::where('id', $id)->get();
         $list_analisa_upah = AnalisaUpah::where('id', $id)->get();
@@ -62,20 +69,24 @@ class PengajuanAnalisaController extends Controller
         }
 
         return view('unitkerja.penambahan.user.analisa', [
-            'pekerjaan' => $pekerjaan
+            'pekerjaan' => $pekerjaan,
+            'bahan' => $bahan,
+            'upah' => $upah,
+            'material' => $material
         ]);
     }
 
     public function submitForm(Request $request, $id)
     {
+        echo '<pre>' . var_export($request->data, true) . '</pre>';
     }
 
     private function diffAnalisa($oldPekerjaan, $newPekerjaan)
     {
         /**
-         * insert => jenis_analisa, id_analisa, id_pekerjaan, koefisien, id_pengaju, komentar
-         * update => jenis_analisa, id_analisa, koefisien, id_pengaju, komentar
-         * delete => jenis_analisa, id_analisa, id_pengaju, komentar
+         * insert => jenis_analisa (bahan/upah/material), id_analisa (***.id_analisa_***), id_pekerjaan (pekerjaan.id), koefisien, id_pengaju, komentar
+         * update => jenis_analisa (bahan/upah/material), id_analisa (***.id_analisa_***), id_pekerjaan (pekerjaan.id), koefisien, id_pengaju, komentar
+         * delete => jenis_analisa (bahan/upah/material), id_analisa (***.id_analisa_***), id_pekerjaan (pekerjaan.id), id_pengaju, komentar
          */
 
         $diff = ['insert' => [], 'update' => [], 'delete' => []];
