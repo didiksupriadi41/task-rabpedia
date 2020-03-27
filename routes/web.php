@@ -34,6 +34,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/riwayat-pengajuan', 'StatusPengajuanController@detail_pengajuan');
 	Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
+    Route::get('/lihat-katalog/search', [
+        'uses' => 'LihatKatalogController@search_list_katalog',
+        'as'   => 'searchPekerjaan'
+    ]);
 	Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');   	
 
     Route::get('/penambahan-ditlog', function () {
