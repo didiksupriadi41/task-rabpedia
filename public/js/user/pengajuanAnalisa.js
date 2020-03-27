@@ -30,7 +30,8 @@ $(document).ready(function() {
 
         html = `<tr id='row-${tipe_analisa}${id_analisa}'>
                     <td hidden><input hidden name='data[${tipe_analisa}${id_analisa}][jenis_analisa]' value="${tipe_analisa}" /></td>
-                    <td hidden><input hidden name='data[${tipe_analisa}${id_analisa}][id_analisa]' value="${id_analisa}" /></td>
+                    <td hidden><input hidden name='data[${tipe_analisa}${id_analisa}][id_analisa]' value="-1" /></td>
+                    <td hidden><input hidden name='data[${tipe_analisa}${id_analisa}][id_item]' value="${id_analisa}" /></td>
 
                     <td class='value'>${namaAnalisa}</td>
                     <td class='value'>

@@ -26,7 +26,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{url('/pengajuan-analisa-user/'.$pekerjaan['id'])}}" method="post">
+                <form action="{{url('/pengajuan-analisa-user/'.$pekerjaan['id'])}}" method="post" novalidate>
                     {{ csrf_field() }}
                     <table id="table-analisa" class="table table-hover p-5">
                         <tr class="contentHeader">
@@ -37,16 +37,19 @@
                             <th class="attribute"></th>
                         </tr>
                         @foreach ($pekerjaan["analisis"] as $analisis)
-                        <tr id='row-{{$analisis["Tipe"].$analisis["ID"]}}'>
-                            <td hidden><input hidden name='data[{{$analisis["Tipe"].$analisis["ID"]}}][jenis_analisa]'
+                        <tr id='row-{{$analisis["Tipe"].$analisis["ID Item"]}}'>
+                            <td hidden><input hidden
+                                    name='data[{{$analisis["Tipe"].$analisis["ID Item"]}}][jenis_analisa]'
                                     value="{{$analisis['Tipe']}}" /></td>
-                            <td hidden><input hidden name='data[{{$analisis["Tipe"].$analisis["ID"]}}][id_analisa]'
-                                    value="{{$analisis['ID']}}" /></td>
+                            <td hidden><input hidden name='data[{{$analisis["Tipe"].$analisis["ID Item"]}}][id_analisa]'
+                                    value="{{$analisis['ID Analisis']}}" /></td>
+                            <td hidden><input hidden name='data[{{$analisis["Tipe"].$analisis["ID Item"]}}][id_item]'
+                                    value="{{$analisis['ID Item']}}" /></td>
 
                             <td class='value'>{{$analisis["Bahan-Upah-Material"]}}</td>
                             <td class='value'>
                                 <input class='form-control form-control-sm' type='number'
-                                    name='data[{{$analisis["Tipe"].$analisis["ID"]}}][koefisien]'
+                                    name='data[{{$analisis["Tipe"].$analisis["ID Item"]}}][koefisien]'
                                     value='{{$analisis["Koefisien"]}}'>
                             </td>
                             <td class='value'>{{$analisis["Satuan"]}}</td>
@@ -54,7 +57,7 @@
                             <td class='changeDBButton'>
                                 <button type="button"
                                     class='delete-row btn btn-secondary btn-danger btn-sm text-light font-weight-bold'
-                                    id='{{$analisis["Tipe"].$analisis["ID"]}}'>Delete
+                                    id='{{$analisis["Tipe"].$analisis["ID Item"]}}'>Delete
                                 </button>
                             </td>
                         </tr>
