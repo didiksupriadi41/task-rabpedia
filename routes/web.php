@@ -33,12 +33,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/riwayat-pengajuan', 'StatusPengajuanController@detail_pengajuan');
-	Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
+    Route::get('/lihat-katalog', 'LihatKatalogController@show_list_katalog');
     Route::get('/lihat-katalog/search', [
         'uses' => 'LihatKatalogController@search_list_katalog',
         'as'   => 'searchPekerjaan'
     ]);
-	Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');   	
+    Route::get('/penambahan-katalog', 'PenambahanKatalogJasaController@show_list_jasa');
 
     Route::get('/penambahan-ditlog', function () {
         return view('unitkerja.penambahan.ditlog.home');
@@ -51,17 +51,20 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/persetujuan-bahan-ditlog', 'PenyetujuanBahanDitlogController@show_list_bahan_pengajuan');
     Route::get('/persetujuan-material-ditlog', 'PenyetujuanMaterialDitlogController@show_list_material_pengajuan');
-    
     Route::get('/persetujuan-upah-ditlog', 'PenyetujuanUpahDitlogController@show_list_upah_pengajuan');
+
     Route::get('/penambahan-bahan-user', 'PenambahanBahanDitlogController@show_list_bahan_user');
     Route::get('/penambahan-upah-user', 'PenambahanUpahDitlogController@show_list_upah_user');
-    Route::get('/penambahan-material-user', 'PenambahanMaterialDitlogController@show_list_material_user');    
-    Route::get('/pengurangan-bahan-user', 'PenambahanBahanDitlogController@show_list_delete_bahan_user');        
+    Route::get('/penambahan-material-user', 'PenambahanMaterialDitlogController@show_list_material_user');
+    Route::get('/pengurangan-bahan-user', 'PenambahanBahanDitlogController@show_list_delete_bahan_user');
     Route::get('/pengurangan-material-user', 'PenambahanMaterialDitlogController@show_list_delete_material_user');
     Route::get('/pengurangan-upah-user', 'PenambahanUpahDitlogController@show_list_delete_upah_user');
-    Route::get('/pengeditan-bahan-user', 'PenambahanBahanDitlogController@show_list_edit_bahan_user');        
-    Route::get('/pengeditan-material-user', 'PenambahanMaterialDitlogController@show_list_edit_material_user');        
+    Route::get('/pengeditan-bahan-user', 'PenambahanBahanDitlogController@show_list_edit_bahan_user');
+    Route::get('/pengeditan-material-user', 'PenambahanMaterialDitlogController@show_list_edit_material_user');
     Route::get('/pengeditan-upah-user', 'PenambahanUpahDitlogController@show_list_edit_upah_user');
+
+    Route::get('/pengajuan-analisa-user/{id}', 'PengajuanAnalisaController@showForm');
+    Route::post('/pengajuan-analisa-user/{id}', 'PengajuanAnalisaController@submitForm');
 
     Route::post('/deletefromupahinsertditlog', 'PenyetujuanUpahDitlogController@delete_upah_insert_user');
     Route::post('/insertfromupahinsertditlog', 'PenyetujuanUpahDitlogController@insert_upah_insert_user');
@@ -74,10 +77,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/deletefrommaterialinsertditlog', 'PenyetujuanMaterialDitlogController@delete_material_insert_user');
     Route::post('/insertfrommaterialinsertditlog', 'PenyetujuanMaterialDitlogController@insert_material_insert_user');
-    
+
     Route::post('/deletefrommaterialupdateditlog', 'PenyetujuanMaterialDitlogController@delete_material_update_user');
     Route::post('/insertfrommaterialupdateditlog', 'PenyetujuanMaterialDitlogController@insert_material_update_user');
-    
+
     Route::post('/deletefrommaterialdeleteditlog', 'PenyetujuanMaterialDitlogController@delete_material_delete_user');
     Route::post('/insertfrombamaterialdeleteditlog', 'PenyetujuanMaterialDitlogController@insert_material_delete_user');
     Route::post('/deletefrombahaninsertditlog', 'PenyetujuanBahanDitlogController@delete_bahan_insert_user');
@@ -91,8 +94,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/riwayat-pengajuan/{id}', 'StatusPengajuanController@show');
-    Route::get('/persetujuan/{id}/pdf','PersetujuanController@export_pdf');
+    Route::get('/persetujuan/{id}/pdf', 'PersetujuanController@export_pdf');
     Route::resource('persetujuan', 'PersetujuanController');
+
+    Route::get('/pengajuan', function () {
+        return view('pengajuan');
+    });
 });
 
 
