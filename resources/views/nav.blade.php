@@ -20,6 +20,9 @@
                 <a class="nav-link" href="/penambahan-katalog">Penambahan</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/pengajuan">Pengajuan</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/penambahan-ditlog">Penambahan Ditlog</a>
             </li>
         </ul>
