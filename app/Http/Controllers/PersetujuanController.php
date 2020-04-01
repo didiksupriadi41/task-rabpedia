@@ -18,13 +18,14 @@ class PersetujuanController extends Controller
      */
     public function index()
     {
-        $pengajuan = Pengajuan::all();
-        // dump($pengajuan);
-        $detail_pengajuan = DetailPengajuan::all();
-        // dump($detail_pengajuan);
-        $pekerjaan = Pekerjaan::all();
-        // dump($pekerjaan);
-        $pengajuan = Pengajuan::all();
+      $pengajuan = Pengajuan::all();
+      $detail_pengajuan = DetailPengajuan::all();
+      $pekerjaan = Pekerjaan::all();
+      $pengajuan = Pengajuan::all();
+      // DEBUG
+      // dump($pengajuan);
+      // dump($detail_pengajuan);
+      // dump($pekerjaan);
       return view('unitkerja.persetujuan.index', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
     }
 
@@ -108,11 +109,7 @@ class PersetujuanController extends Controller
       $pengajuan = Pengajuan::find($id);
       $detail_pengajuan = DetailPengajuan::where('id_pengajuan', $id)->orderBy('kategori_I', 'asc')->orderBy('kategori_II', 'asc')->get();
       $analisa_detail_pengajuan = AnalisaDetailPengajuan::all();
-      // Send data to the view using loadView function of PDF facade
       $pdf = PDF::loadView('print', compact(['pengajuan', 'detail_pengajuan', 'analisa_detail_pengajuan']));
-      // If you want to store the generated pdf to the server then you can use the store function
-      // $pdf->save(storage_path().'_filename.pdf');
-      // Finally, you can download the file using download function
       return $pdf->download('rab.pdf');
     }
 }
