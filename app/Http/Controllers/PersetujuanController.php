@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Pengajuan;
 use App\Pekerjaan;
 use App\DetailPengajuan;
+use App\AnalisaDetailPengajuan;
 use Illuminate\Http\Request;
+use PDF;
 
 class PersetujuanController extends Controller
 {
@@ -16,13 +18,14 @@ class PersetujuanController extends Controller
      */
     public function index()
     {
-        $pengajuan = Pengajuan::all();
-        // dump($pengajuan);
-        $detail_pengajuan = DetailPengajuan::all();
-        // dump($detail_pengajuan);
-        $pekerjaan = Pekerjaan::all();
-        // dump($pekerjaan);
       $pengajuan = Pengajuan::all();
+      $detail_pengajuan = DetailPengajuan::all();
+      $pekerjaan = Pekerjaan::all();
+      $pengajuan = Pengajuan::all();
+      // DEBUG
+      // dump($pengajuan);
+      // dump($detail_pengajuan);
+      // dump($pekerjaan);
       return view('unitkerja.persetujuan.index', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
     }
 
@@ -67,11 +70,9 @@ class PersetujuanController extends Controller
     public function edit(int $id)
     {
       $pengajuan = Pengajuan::find($id);
-      $detail_pengajuan = DetailPengajuan::all();
-      // dump($detail_pengajuan);
-      $pekerjaan = Pekerjaan::all();
-      // dump($pekerjaan);
-      return view('unitkerja.persetujuan.edit', compact(['pengajuan', 'detail_pengajuan', 'pekerjaan']));
+      $detail_pengajuan = DetailPengajuan::where('id_pengajuan', $id)->orderBy('kategori_I', 'asc')->orderBy('kategori_II', 'asc')->get();
+      $analisa_detail_pengajuan = AnalisaDetailPengajuan::all();
+      return view('unitkerja.persetujuan.edit', compact(['pengajuan', 'detail_pengajuan', 'analisa_detail_pengajuan']));
     }
 
     /**
@@ -86,9 +87,10 @@ class PersetujuanController extends Controller
       $pengajuan = Pengajuan::find($id);
 
       $pengajuan->status_pengajuan = request('status_pengajuan');
+      $pengajuan->komentar = request('komentar');
       $pengajuan->save();
 
-      return redirect('/persetujuan/');
+      return redirect('/riwayat-pengajuan/' . $id);
     }
 
     /**
@@ -100,5 +102,14 @@ class PersetujuanController extends Controller
     public function destroy(Pengajuan $pengajuan)
     {
         //
+    }
+
+    public function export_pdf(int $id)
+    {
+      $pengajuan = Pengajuan::find($id);
+      $detail_pengajuan = DetailPengajuan::where('id_pengajuan', $id)->orderBy('kategori_I', 'asc')->orderBy('kategori_II', 'asc')->get();
+      $analisa_detail_pengajuan = AnalisaDetailPengajuan::all();
+      $pdf = PDF::loadView('print', compact(['pengajuan', 'detail_pengajuan', 'analisa_detail_pengajuan']));
+      return $pdf->download('rab.pdf');
     }
 }

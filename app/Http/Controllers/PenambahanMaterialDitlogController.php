@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Material;
+use \App\PengajuanMaterialInsert;
+use \App\PengajuanMaterialDelete;
+use \App\PengajuanMaterialUpdate;
 
 class PenambahanMaterialDitlogController extends Controller
 {
@@ -16,7 +19,40 @@ class PenambahanMaterialDitlogController extends Controller
     		'material_satuan' => ($material_satuan),
     		'material_cabang' => ($material_cabang)
     	]);
-    }
+	}
+	
+	public function show_list_material_user(){
+    	$material = Material::all();
+    	$material_satuan = Material::select('satuan')->distinct()->get();
+    	$material_cabang = Material::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.penambahan.user.material', [
+    		'material' => ($material), 
+    		'material_satuan' => ($material_satuan),
+    		'material_cabang' => ($material_cabang)
+    	]);
+	}
+	
+	public function show_list_delete_material_user(){
+    	$material = Material::all();
+    	$material_satuan = Material::select('satuan')->distinct()->get();
+    	$material_cabang = Material::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.delete.user.material', [
+    		'material' => ($material), 
+    		'material_satuan' => ($material_satuan),
+    		'material_cabang' => ($material_cabang)
+    	]);
+	}
+
+	public function show_list_edit_material_user(){
+    	$material = Material::all();
+    	$material_satuan = Material::select('satuan')->distinct()->get();
+    	$material_cabang = Material::select('cabang_itb')->distinct()->get();
+    	return view('unitkerja.edit.user.material', [
+    		'material' => ($material), 
+    		'material_satuan' => ($material_satuan),
+    		'material_cabang' => ($material_cabang)
+    	]);
+	}
 
     public function deleteMaterial(Request $request){
     	$id_material = $request->id_material;
@@ -27,7 +63,27 @@ class PenambahanMaterialDitlogController extends Controller
 
     	return response()->json([
     	]);
-    }
+	}
+	
+	public function deleteMaterialUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_material_delete' => 'required', 
+			'id_pengaju' => 'required',
+			'komentar' => 'required',
+    	]);
+
+    	$material = new PengajuanMaterialDelete;
+
+    	$material->id_material_delete = $request->id_material_delete;
+		$material->id_pengaju = $request->id_pengaju;
+		$material->komentar = $request->komentar;
+
+    	$material->save();
+
+    	return response()->json([
+    		'material' => ($material)
+    	]);
+	}
 
     public function storeMaterial(Request $request){
     	$validatedData = $request->validate([
@@ -56,7 +112,40 @@ class PenambahanMaterialDitlogController extends Controller
     	return response()->json([
     		'material' => ($material)
     	]);
-    }
+	}
+
+	public function storeMaterialUser(Request $request){
+    	$validatedData = $request->validate([
+    		'item_material' => 'required', 
+    		'volume' => 'required', 
+    		'satuan' => 'required', 
+    		'harga_pembanding' => 'required', 
+    		'harga_saat_ini' => 'required', 
+    		'harga_satuan' => 'required',
+    		'cabang_itb' => 'required',
+			'id_pengaju' => 'required',
+			'komentar' => 'required',
+    	]);
+
+    	$material = new PengajuanMaterialInsert;
+
+    	$material->item_material = $request->item_material;
+    	$material->volume = $request->volume;
+    	$material->satuan = $request->satuan;
+    	$material->harga_pembanding = $request->harga_pembanding;
+    	$material->harga_saat_ini = $request->harga_saat_ini;
+    	$material->harga_satuan = $request->harga_satuan;
+    	$material->keterangan_tambahan = $request->keterangan_tambahan;
+		$material->cabang_itb = $request->cabang_itb;
+		$material->id_pengaju = $request->id_pengaju;
+		$material->komentar = $request->komentar;
+
+    	$material->save();
+
+    	return response()->json([
+    		'material' => ($material)
+    	]);
+	}
 
     public function updateMaterial(Request $request){
     	$validatedData = $request->validate([
@@ -75,6 +164,35 @@ class PenambahanMaterialDitlogController extends Controller
     	$material->harga_saat_ini = $request->harga_saat_ini;
     	$material->harga_satuan = $request->harga_satuan;
     	$material->keterangan_tambahan = $request->keterangan_tambahan;
+
+    	$material->save();
+
+    	return response()->json([
+    		'material' => ($material) 
+    	]);
+	}
+	
+	public function updateMaterialUser(Request $request){
+    	$validatedData = $request->validate([
+    		'id_material_update' => 'required',
+    		'item_material' => 'required',
+    		'harga_pembanding' => 'required', 
+    		'harga_saat_ini' => 'required',  
+			'harga_satuan' => 'required',
+			'id_pengaju' => 'required',
+			'komentar' => 'required'
+    	]);
+
+		$material = new PengajuanMaterialUpdate;
+		
+		$material->id_material_update = $request->id_material_update;
+    	$material->item_material = $request->item_material;
+    	$material->volume = $request->volume;
+    	$material->harga_pembanding = $request->harga_pembanding;
+    	$material->harga_saat_ini = $request->harga_saat_ini;
+    	$material->harga_satuan = $request->harga_satuan;
+		$material->id_pengaju = $request->id_pengaju;
+		$material->komentar = $request->komentar;
 
     	$material->save();
 
